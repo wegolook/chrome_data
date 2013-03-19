@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = ChromeData::VERSION
   spec.authors       = ["Jim Ryan"]
   spec.email         = ["jim@room118solutions.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Provides a ruby interface for Chrome Data's API. Read more about it here: http://www.chromedata.com/}
+  spec.summary       = %q{A ruby interface for Chrome Data's API}
+  spec.homepage      = "http://github.com/room118solutions/chrome_data"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
