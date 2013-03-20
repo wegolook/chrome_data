@@ -32,4 +32,12 @@ describe ChromeData::Division do
       @divisions.first.name.must_equal 'Acura'
     end
   end
+
+  describe '#models_for_year' do
+    it 'finds models for given year and Division ID' do
+      ChromeData::Model.expects(:find_all_by_year_and_division_id).with(2013, '13')
+
+      ChromeData::Division.new(id: '13', name: 'Ford').models_for_year 2013
+    end
+  end
 end

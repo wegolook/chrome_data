@@ -3,6 +3,7 @@ require 'chrome_data'
 
 require 'minitest/spec'
 require 'minitest/autorun'
+require "mocha/setup"
 require 'vcr'
 
 VCR.configure do |c|
