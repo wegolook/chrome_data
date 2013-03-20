@@ -1,5 +1,14 @@
 require "chrome_data/version"
+require "symboltable"
 
 module ChromeData
-  # Your code goes here...
+  extend self
+
+  def configure
+    yield config
+  end
+
+  def config
+    @@config ||= SymbolTable.new
+  end
 end
