@@ -13,7 +13,7 @@ describe ChromeData::Style do
       end
 
       VCR.use_cassette('wsdl') do
-        VCR.use_cassette('styles/24997') do
+        VCR.use_cassette('2013/divisions/13/models/24997/styles') do
           @models = ChromeData::Style.find_all_by_model_id(24997) # 2013 Ford Mustang
         end
       end

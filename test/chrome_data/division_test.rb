@@ -13,7 +13,7 @@ describe ChromeData::Division do
       end
 
       VCR.use_cassette('wsdl') do
-        VCR.use_cassette('divisions/2013') do
+        VCR.use_cassette('2013/divisions') do
           @divisions = ChromeData::Division.find_all_by_year(2013)
         end
       end

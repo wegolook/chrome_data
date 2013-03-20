@@ -13,7 +13,7 @@ describe ChromeData::Model do
       end
 
       VCR.use_cassette('wsdl') do
-        VCR.use_cassette('models/2013_13') do
+        VCR.use_cassette('2013/divisions/13/models') do
           @models = ChromeData::Model.find_all_by_year_and_division_id(2013, 13) # 2013 Fords
         end
       end
