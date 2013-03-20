@@ -13,7 +13,8 @@ module ChromeData
 
     class << self
       def request_name
-        raise NotImplementedError, '#request_name should be implemented in subclass'
+        # Cheap-o inflector
+        "get#{name.split('::').last}s"
       end
 
       # Builds request, sets additional data on request element, makes request, and yields child elements from response to block

@@ -5,10 +5,6 @@ module ChromeData
     end
 
     class << self
-      def request_name
-        'getDivisions'
-      end
-
       def find_all_by_year(year)
         request('modelYear' => year) do |division|
           new id: division.attributes['id'].value.to_i, name: division.text
