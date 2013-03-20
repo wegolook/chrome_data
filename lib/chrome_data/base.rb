@@ -17,8 +17,9 @@ module ChromeData
         "get#{name.split('::').last}s"
       end
 
-      # Builds request, sets additional data on request element, makes request, and yields child elements from response to block
-      def request(data, &blk)
+      # Builds request, sets additional data on request element, makes request,
+      # and returns array of child elements wrapped in instances of this class
+      def request(data)
         request = build_request
 
         request.body do |b|
@@ -47,8 +48,10 @@ module ChromeData
         # Make the request
         response = make_request(request)
 
-        # Find elements matching class name and yield them to the block
-        response.body.xpath(".//x:#{name.split('::').last.downcase}", 'x' => response.body.namespace.href).map &blk
+        # Find elements matching class name and instantiate them using their id attribute and text
+        response.body.xpath(".//x:#{name.split('::').last.downcase}", 'x' => response.body.namespace.href).map do |e|
+          new id: e.attributes['id'].value.to_i, name: e.text
+        end
       end
 
       # Makes request, returns LolSoap::Response
