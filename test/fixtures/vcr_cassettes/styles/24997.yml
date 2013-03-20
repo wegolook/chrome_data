@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://services.chromedata.com/Description/7a
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\"?>\n<soap:Envelope xmlns:dtns=\"urn:description7a.services.chrome.com\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Header/>\n
+        \ <soap:Body>\n    <dtns:StylesRequest modelId=\"24997\">\n      <dtns:accountInfo
+        number=\"123456\" secret=\"1111111111111111\" country=\"US\" language=\"en\"/>\n
+        \   </dtns:StylesRequest>\n  </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '369'
+      Soapaction:
+      - ''
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Mar 2013 02:06:50 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '733'
+      P3p:
+      - CP="NOI ADMa CUR DEVa OUR IND TAI BUS UNI"
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=utf-8
+      Chrome:
+      - '198'
+    body:
+      encoding: US-ASCII
+      string: <?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><Styles
+        xmlns="urn:description7a.services.chrome.com"><responseStatus responseCode="Successful"
+        description="Successful"/><style id="349411">2dr Conv GT</style><style id="349412">2dr
+        Conv GT Premium</style><style id="349413">2dr Conv Shelby GT500</style><style
+        id="349409">2dr Conv V6</style><style id="349410">2dr Conv V6 Premium</style><style
+        id="349407">2dr Cpe Boss 302</style><style id="349405">2dr Cpe GT</style><style
+        id="349406">2dr Cpe GT Premium</style><style id="349408">2dr Cpe Shelby GT500</style><style
+        id="349403">2dr Cpe V6</style><style id="349404">2dr Cpe V6 Premium</style></Styles></S:Body></S:Envelope>
+    http_version:
+  recorded_at: Wed, 20 Mar 2013 02:06:51 GMT
+recorded_with: VCR 2.4.0
