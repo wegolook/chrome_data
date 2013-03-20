@@ -5,4 +5,4 @@ gemspec
 
 # TODO: This sucks, but the latest release of lolsoap doesn't work with ChromeData
 #       If they don't release soon, we'll need to bundle lolsoap master with this gem I guess
-gem 'lolsoap', github: 'loco2/lolsoap'
+gem 'lolsoap', github: 'loco2/lolsoap', ref: '92831607'
