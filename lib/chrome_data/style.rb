@@ -1,7 +1,5 @@
 module ChromeData
   class Style < Base
-    attr_accessor :id, :name
-
     class << self
       def request_name
         'getStyles'

@@ -3,6 +3,7 @@ require "lolsoap"
 
 module ChromeData
   class Base
+    attr_accessor :id, :name
 
     def initialize(attrs)
       attrs.each do |k, v|
