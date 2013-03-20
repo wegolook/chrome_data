@@ -15,8 +15,8 @@ module ChromeData
         raise NotImplementedError, '#request_name should be implemented in subclass'
       end
 
-      # Builds request, sets additional attributes on request element, makes request, and yields child elements from response to block
-      def request(attributes, &blk)
+      # Builds request, sets additional data on request element, makes request, and yields child elements from response to block
+      def request(data, &blk)
         request = build_request
 
         request.body do |b|
@@ -29,8 +29,16 @@ module ChromeData
           )
 
           # Set additional elements on builder
-          attributes.each do |k, v|
-            b.__attribute__ k, v
+          data.each do |k, v|
+            # Add the key/value pair as an attribute to the request element if that's what it should be,
+            # otherwise add it as a sub-element
+            # NOTE: This basically mirrors LolSoap::Builder#method_missing
+            #       because Builder undefines most methods, including #send
+            if b.__type__.has_attribute?(k)
+              b.__attribute__ k, v
+            else
+              b.__tag__ k, v
+            end
           end
         end
 
