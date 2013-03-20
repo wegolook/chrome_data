@@ -2,6 +2,10 @@ module ChromeData
   class Model < Base
     attr_accessor :id, :name
 
+    def styles
+      Style.find_all_by_model_id id
+    end
+
     class << self
       def request_name
         'getModels'

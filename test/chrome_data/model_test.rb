@@ -32,4 +32,12 @@ describe ChromeData::Model do
       @models.first.name.must_equal 'C-Max Energi'
     end
   end
+
+  describe '#styles' do
+    it 'finds styles for Model' do
+      ChromeData::Style.expects(:find_all_by_model_id).with('24997')
+
+      ChromeData::Model.new(id: '24997', name: 'Mustang').styles
+    end
+  end
 end
