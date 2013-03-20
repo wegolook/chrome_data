@@ -25,7 +25,7 @@ describe ChromeData::Division do
     end
 
     it 'sets ID on Division objects' do
-      @divisions.first.id.must_equal '1'
+      @divisions.first.id.must_equal 1
     end
 
     it 'sets name on Division objects' do
@@ -35,9 +35,9 @@ describe ChromeData::Division do
 
   describe '#models_for_year' do
     it 'finds models for given year and Division ID' do
-      ChromeData::Model.expects(:find_all_by_year_and_division_id).with(2013, '13')
+      ChromeData::Model.expects(:find_all_by_year_and_division_id).with(2013, 13)
 
-      ChromeData::Division.new(id: '13', name: 'Ford').models_for_year 2013
+      ChromeData::Division.new(id: 13, name: 'Ford').models_for_year 2013
     end
   end
 end

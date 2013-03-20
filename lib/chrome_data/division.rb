@@ -13,7 +13,7 @@ module ChromeData
 
       def find_all_by_year(year)
         request('modelYear' => year) do |division|
-          new id: division.attributes['id'].value, name: division.text
+          new id: division.attributes['id'].value.to_i, name: division.text
         end
       end
     end

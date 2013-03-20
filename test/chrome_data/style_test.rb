@@ -25,7 +25,7 @@ describe ChromeData::Style do
     end
 
     it 'sets ID on Style objects' do
-      @models.first.id.must_equal '349411'
+      @models.first.id.must_equal 349411
     end
 
     it 'sets name on Style objects' do

@@ -25,7 +25,7 @@ describe ChromeData::Model do
     end
 
     it 'sets ID on Model objects' do
-      @models.first.id.must_equal '25459'
+      @models.first.id.must_equal 25459
     end
 
     it 'sets name on Model objects' do
@@ -35,9 +35,9 @@ describe ChromeData::Model do
 
   describe '#styles' do
     it 'finds styles for Model' do
-      ChromeData::Style.expects(:find_all_by_model_id).with('24997')
+      ChromeData::Style.expects(:find_all_by_model_id).with(24997)
 
-      ChromeData::Model.new(id: '24997', name: 'Mustang').styles
+      ChromeData::Model.new(id: 24997, name: 'Mustang').styles
     end
   end
 end
