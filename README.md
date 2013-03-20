@@ -1,6 +1,8 @@
 # ChromeData
 
-TODO: Write a gem description
+Provides a simple ruby interface for Chrome Data's API. Read more about it here: http://www.chromedata.com/
+
+The wonderful [lolsoap](https://github.com/loco2/lolsoap) gem does most of the heavy lifting.
 
 ## Installation
 
