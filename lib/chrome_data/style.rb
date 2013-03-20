@@ -7,6 +7,5 @@ module ChromeData
         end
       end
     end
-
   end
 end
