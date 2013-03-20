@@ -4,7 +4,10 @@ TODO: Write a gem description
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these lines to your application's Gemfile:
+
+    # ChromeData will require the lolsoap gem automatically as soon as they release the next version
+    gem 'lolsoap', github: 'loco2/lolsoap', ref: '92831607'
 
     gem 'chrome_data'
 
