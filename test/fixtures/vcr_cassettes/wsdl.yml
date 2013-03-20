@@ -1,0 +1,757 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://services.chromedata.com/Description/7a?wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 19 Mar 2013 23:48:17 GMT
+      Server:
+      - Apache
+      P3p:
+      - CP="NOI ADMa CUR DEVa OUR IND TAI BUS UNI"
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml;charset=utf-8
+      Chrome:
+      - '218'
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI
+        at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-hudson-28-.
+        --><definitions xmlns:dtns=\"urn:description7a.services.chrome.com\" xmlns=\"http://schemas.xmlsoap.org/wsdl/\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\"
+        xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" name=\"Description7a\" targetNamespace=\"urn:description7a.services.chrome.com\">\n
+        \   <documentation>\n        Chrome Automotive Description Service 7.1 876
+        2013.02.06 16.39.52 PST\n    </documentation>\n\n    <types>\n        <schema
+        xmlns:tns=\"urn:description7a.services.chrome.com\" xmlns=\"http://www.w3.org/2001/XMLSchema\"
+        targetNamespace=\"urn:description7a.services.chrome.com\" elementFormDefault=\"qualified\">\n\n
+        \           <complexType name=\"AccountInfo\">\n                <attribute
+        name=\"number\" type=\"string\" use=\"required\">\n                    <annotation>\n
+        \                       <documentation>Account Number provided by Chrome.</documentation>\n
+        \                   </annotation>\n                </attribute>\n                <attribute
+        name=\"secret\" type=\"string\" use=\"required\">\n                    <annotation>\n
+        \                       <documentation>Account Secret/Password provided by
+        Chrome.</documentation>\n                    </annotation>\n                </attribute>\n
+        \               <attribute name=\"country\" type=\"string\" use=\"required\">\n
+        \                   <annotation>\n                        <documentation>Upper-case,
+        two-letter code defined by ISO-3166.</documentation>\n                    </annotation>\n
+        \               </attribute>\n                <attribute name=\"language\"
+        type=\"string\" use=\"required\">\n                    <annotation>\n                        <documentation>Lower-case,
+        two-letter code defined by ISO-639.</documentation>\n                    </annotation>\n
+        \               </attribute>\n                <attribute name=\"behalfOf\"
+        type=\"string\" />\n            </complexType>\n\n            <element name=\"VersionInfo\">\n
+        \               <complexType>\n                    <complexContent>\n                        <extension
+        base=\"tns:BaseResponse\">\n                            <sequence>\n                                <element
+        name=\"data\" maxOccurs=\"unbounded\">\n                                    <annotation>\n
+        \                                       <documentation>Represents each country
+        of data available via this service, its\n                                            version,
+        and licensed availability.\n                                        </documentation>\n
+        \                                   </annotation>\n                                    <complexType>\n
+        \                                       <attribute name=\"country\" type=\"string\"
+        use=\"required\">\n                                            <annotation>\n
+        \                                               <documentation>Upper-case,
+        two-letter country code defined by ISO-3166.\n                                                </documentation>\n
+        \                                           </annotation>\n                                        </attribute>\n
+        \                                       <attribute name=\"build\" type=\"string\"
+        use=\"required\">\n                                            <annotation>\n
+        \                                               <documentation>The unique
+        version number for this data set.\n                                                </documentation>\n
+        \                                           </annotation>\n                                        </attribute>\n
+        \                                       <attribute name=\"date\" type=\"dateTime\"
+        use=\"required\">\n                                            <annotation>\n
+        \                                               <documentation>The time at
+        which this data was published.\n                                                </documentation>\n
+        \                                           </annotation>\n                                        </attribute>\n
+        \                                       <attribute name=\"licensed\" type=\"boolean\">\n
+        \                                           <annotation>\n                                                <documentation>True
+        if these data are licensed.</documentation>\n                                            </annotation>\n
+        \                                       </attribute>\n                                    </complexType>\n
+        \                               </element>\n                            </sequence>\n
+        \                       </extension>\n                    </complexContent>\n
+        \               </complexType>\n            </element>\n\n            <complexType
+        name=\"BaseResponse\">\n                <sequence>\n                    <element
+        name=\"responseStatus\" type=\"tns:ResponseStatus\" />\n                </sequence>\n
+        \           </complexType>\n\n            <element name=\"ModelYears\">\n
+        \               <complexType>\n                    <complexContent>\n                        <extension
+        base=\"tns:BaseResponse\">\n                            <sequence>\n                                <element
+        name=\"modelYear\" type=\"int\" minOccurs=\"0\" maxOccurs=\"unbounded\" />\n
+        \                           </sequence>\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <element name=\"Divisions\">\n                <complexType>\n
+        \                   <complexContent>\n                        <extension base=\"tns:BaseResponse\">\n
+        \                           <sequence>\n                                <element
+        name=\"division\" type=\"tns:IdentifiedString\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                            </sequence>\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <element name=\"Subdivisions\">\n                <complexType>\n
+        \                   <complexContent>\n                        <extension base=\"tns:BaseResponse\">\n
+        \                           <sequence>\n                                <element
+        name=\"subdivision\" type=\"tns:IdentifiedString\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                            </sequence>\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <element name=\"Models\">\n                <complexType>\n                    <complexContent>\n
+        \                       <extension base=\"tns:BaseResponse\">\n                            <sequence>\n
+        \                               <element name=\"model\" type=\"tns:IdentifiedString\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                            </sequence>\n
+        \                       </extension>\n                    </complexContent>\n
+        \               </complexType>\n            </element>\n\n            <element
+        name=\"Styles\">\n                <complexType>\n                    <complexContent>\n
+        \                       <extension base=\"tns:BaseResponse\">\n                            <sequence>\n
+        \                               <element name=\"style\" type=\"tns:IdentifiedString\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                            </sequence>\n
+        \                       </extension>\n                    </complexContent>\n
+        \               </complexType>\n            </element>\n\n            <complexType
+        name=\"Style\">\n                <sequence>\n                    <element
+        name=\"division\" type=\"tns:IdentifiedString\" />\n                    <element
+        name=\"subdivision\" type=\"tns:IdentifiedString\" />\n                    <element
+        name=\"model\" type=\"tns:IdentifiedString\" />\n\n                    <element
+        name=\"basePrice\" type=\"tns:Price\" minOccurs=\"0\" />\n                    <element
+        name=\"bodyType\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n                        <complexType>\n
+        \                           <complexContent>\n                                <extension
+        base=\"tns:IdentifiedString\">\n                                    <attribute
+        name=\"primary\" type=\"boolean\" />\n                                </extension>\n
+        \                           </complexContent>\n                        </complexType>\n
+        \                   </element>\n                    <element name=\"marketClass\"
+        type=\"tns:IdentifiedString\" minOccurs=\"0\" />\n                    <element
+        name=\"stockImage\" minOccurs=\"0\">\n                        <complexType>\n
+        \                           <complexContent>\n                                <extension
+        base=\"tns:Image\">\n                                    <attribute name=\"filename\"
+        type=\"string\" use=\"required\" />\n                                </extension>\n
+        \                           </complexContent>\n                        </complexType>\n
+        \                   </element>\n                    <element name=\"mediaGallery\"
+        type=\"tns:MediaGallery\" minOccurs=\"0\" />\n                </sequence>\n
+        \               <attribute name=\"id\" type=\"int\" use=\"required\" />\n
+        \               <attribute name=\"modelYear\" type=\"int\" use=\"required\"
+        />\n                <attribute name=\"name\" type=\"string\" use=\"required\"
+        />\n                <attribute name=\"nameWoTrim\" type=\"string\" />\n                <attribute
+        name=\"trim\" type=\"string\" />\n                <attribute name=\"mfrModelCode\"
+        type=\"string\" />\n                <attribute name=\"fleetOnly\" type=\"boolean\"
+        />\n                <attribute name=\"modelFleet\" type=\"boolean\" />\n                <attribute
+        name=\"passDoors\" type=\"int\" />\n                <attribute name=\"altModelName\"
+        type=\"string\" />\n                <attribute name=\"altStyleName\" type=\"string\"
+        />\n                <attribute name=\"altBodyType\" type=\"string\" />\n                <attribute
+        name=\"drivetrain\" type=\"tns:DriveTrain\" />\n            </complexType>\n\n
+        \           <complexType name=\"Price\">\n                <attribute name=\"unknown\"
+        type=\"boolean\" />\n                <attribute name=\"invoice\" type=\"double\"
+        />\n                <attribute name=\"msrp\" type=\"double\" />\n                <attribute
+        name=\"destination\" type=\"double\" />\n            </complexType>\n\n            <complexType
+        name=\"PriceRange\">\n                <sequence>\n                    <element
+        name=\"invoice\" type=\"tns:Range\" />\n                    <element name=\"msrp\"
+        type=\"tns:Range\" />\n                    <element name=\"destination\" type=\"tns:Range\"
+        />\n                </sequence>\n                <attribute name=\"unknown\"
+        type=\"boolean\" />\n            </complexType>\n\n            <simpleType
+        name=\"DriveTrain\">\n                <restriction base=\"string\">\n                    <enumeration
+        value=\"Front Wheel Drive\" />\n                    <enumeration value=\"Rear
+        Wheel Drive\" />\n                    <enumeration value=\"All Wheel Drive\"
+        />\n                    <enumeration value=\"Four Wheel Drive\" />\n                </restriction>\n
+        \           </simpleType>\n\n            <element name=\"VehicleDescription\">\n
+        \               <complexType>\n                    <complexContent>\n                        <extension
+        base=\"tns:BaseResponse\">\n                            <sequence>\n                                <element
+        name=\"vinDescription\" minOccurs=\"0\">\n                                    <complexType>\n
+        \                                       <sequence>\n                                            <element
+        name=\"gvwr\" type=\"tns:Range\" minOccurs=\"0\" />\n                                            <element
+        name=\"WorldManufacturerIdentifier\" type=\"string\" minOccurs=\"0\" />\n
+        \                                           <element name=\"ManufacturerIdentificationCode\"
+        type=\"string\" minOccurs=\"0\" />\n                                            <element
+        name=\"restraintTypes\" type=\"tns:CategoryDefinition\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                            <element name=\"marketClass\"
+        type=\"tns:IdentifiedString\" minOccurs=\"0\" maxOccurs=\"unbounded\" />\n
+        \                                       </sequence>\n                                        <attribute
+        name=\"vin\" type=\"string\" use=\"required\" />\n                                        <attribute
+        name=\"modelYear\" type=\"int\" use=\"required\" />\n                                        <attribute
+        name=\"division\" type=\"string\" use=\"required\" />\n                                        <attribute
+        name=\"modelName\" type=\"string\" use=\"required\" />\n                                        <attribute
+        name=\"styleName\" type=\"string\" />\n                                        <attribute
+        name=\"bodyType\" type=\"string\" />\n                                        <attribute
+        name=\"drivingWheels\" type=\"string\" />\n                                        <attribute
+        name=\"built\" type=\"dateTime\" />\n                                    </complexType>\n
+        \                               </element>\n                                <element
+        name=\"style\" type=\"tns:Style\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                <element name=\"engine\" type=\"tns:Engine\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                                <element
+        name=\"standard\" type=\"tns:Standard\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                <element name=\"factoryOption\" type=\"tns:Option\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                                <element
+        name=\"genericEquipment\" type=\"tns:GenericEquipment\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                <element name=\"consumerInformation\"
+        type=\"tns:ConsumerInformation\" minOccurs=\"0\" maxOccurs=\"unbounded\" />\n
+        \                               <element name=\"technicalSpecification\" type=\"tns:TechnicalSpecification\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                                <element
+        name=\"exteriorColor\" type=\"tns:Color\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                <element name=\"interiorColor\" type=\"tns:Color\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                                <element
+        name=\"genericColor\" type=\"tns:GenericColor\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                <element name=\"basePrice\" type=\"tns:PriceRange\"
+        minOccurs=\"0\" />\n                            </sequence>\n                            <attribute
+        name=\"country\" type=\"string\" use=\"required\" />\n                            <attribute
+        name=\"language\" type=\"string\" use=\"required\" />\n                            <attribute
+        name=\"modelYear\" type=\"int\" />\n                            <attribute
+        name=\"bestMakeName\" type=\"string\" />\n                            <attribute
+        name=\"bestModelName\" type=\"string\" />\n                            <attribute
+        name=\"bestStyleName\" type=\"string\" />\n                            <attribute
+        name=\"bestTrimName\" type=\"string\" />\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <complexType name=\"Range\">\n                <attribute name=\"low\"
+        type=\"double\" />\n                <attribute name=\"high\" type=\"double\"
+        />\n            </complexType>\n\n            <complexType name=\"InstallationCause\">\n
+        \               <attribute name=\"cause\" use=\"required\">\n                    <simpleType>\n
+        \                       <restriction base=\"string\">\n                            <enumeration
+        value=\"Engine\" />\n                            <enumeration value=\"RelatedCategory\"
+        />\n                            <enumeration value=\"RelatedColor\" />\n                            <enumeration
+        value=\"CategoryLogic\" />\n                            <enumeration value=\"OptionLogic\"
+        />\n                            <enumeration value=\"OptionCodeBuild\" />\n
+        \                           <enumeration value=\"ExteriorColorBuild\" />\n
+        \                           <enumeration value=\"InteriorColorBuild\" />\n
+        \                           <enumeration value=\"EquipmentDescriptionInput\"
+        />\n                            <enumeration value=\"ExteriorColorInput\"
+        />\n                            <enumeration value=\"InteriorColorInput\"
+        />\n                            <enumeration value=\"OptionCodeInput\" />\n
+        \                           <enumeration value=\"BaseEquipment\" />\n                            <enumeration
+        value=\"VIN\" />\n                            <enumeration value=\"NonFactoryEquipmentInput\"
+        />\n                        </restriction>\n                    </simpleType>\n
+        \               </attribute>\n                <attribute name=\"detail\" type=\"string\"
+        />\n            </complexType>\n\n            <complexType name=\"Engine\">\n
+        \               <sequence>\n                    <element name=\"engineType\"
+        type=\"tns:IdentifiedString\" />\n                    <element name=\"fuelType\"
+        type=\"tns:IdentifiedString\" />\n                    <element name=\"horsepower\"
+        type=\"tns:ValueRPM\" minOccurs=\"0\" />\n                    <element name=\"netTorque\"
+        type=\"tns:ValueRPM\" minOccurs=\"0\" />\n                    <element name=\"cylinders\"
+        type=\"int\" minOccurs=\"0\" />\n                    <element name=\"displacement\"
+        minOccurs=\"0\">\n                        <complexType>\n                            <attribute
+        name=\"liters\" type=\"double\" />\n                            <attribute
+        name=\"cubicIn\" type=\"int\" />\n                        </complexType>\n
+        \                   </element>\n                    <element name=\"fuelEconomy\"
+        minOccurs=\"0\">\n                        <complexType>\n                            <sequence>\n
+        \                               <element name=\"city\" type=\"tns:Range\"
+        />\n                                <element name=\"hwy\" type=\"tns:Range\"
+        />\n                            </sequence>\n                            <attribute
+        name=\"unit\" type=\"string\" use=\"required\" />\n                        </complexType>\n
+        \                   </element>\n                    <element name=\"fuelCapacity\"
+        minOccurs=\"0\">\n                        <complexType>\n                            <complexContent>\n
+        \                               <extension base=\"tns:Range\">\n                                    <attribute
+        name=\"unit\" type=\"string\" use=\"required\" />\n                                </extension>\n
+        \                           </complexContent>\n                        </complexType>\n
+        \                   </element>\n                    <element name=\"forcedInduction\"
+        type=\"tns:IdentifiedString\" minOccurs=\"0\" />\n                    <element
+        name=\"installed\" type=\"tns:InstallationCause\" minOccurs=\"0\" />\n                </sequence>\n
+        \               <attribute name=\"highOutput\" type=\"boolean\" />\n            </complexType>\n\n
+        \           <complexType name=\"ValueRPM\">\n                <attribute name=\"value\"
+        type=\"double\" />\n                <attribute name=\"rpm\" type=\"int\" />\n
+        \           </complexType>\n\n            <complexType name=\"Standard\">\n
+        \               <sequence>\n                    <element name=\"header\" type=\"tns:IdentifiedString\"
+        />\n                    <element name=\"description\" type=\"string\" />\n
+        \                   <element name=\"category\" type=\"tns:CategoryAssociation\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                    <element name=\"styleId\"
+        type=\"int\" maxOccurs=\"unbounded\" />\n                    <element name=\"installed\"
+        type=\"tns:InstallationCause\" minOccurs=\"0\" />\n                </sequence>\n
+        \           </complexType>\n\n            <complexType name=\"CategoryAssociation\">\n
+        \               <attribute name=\"id\" type=\"int\" use=\"required\" />\n
+        \               <attribute name=\"removed\" type=\"boolean\" />\n            </complexType>\n\n
+        \           <complexType name=\"Option\">\n                <sequence>\n                    <element
+        name=\"header\" type=\"tns:IdentifiedString\" minOccurs=\"0\" />\n                    <element
+        name=\"description\" type=\"string\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                    <element name=\"category\" type=\"tns:CategoryAssociation\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n\n                    <element
+        name=\"price\" type=\"tns:OptionPrice\" minOccurs=\"0\" />\n                    <element
+        name=\"styleId\" type=\"int\" minOccurs=\"0\" maxOccurs=\"unbounded\" />\n
+        \                   <element name=\"installed\" type=\"tns:InstallationCause\"
+        minOccurs=\"0\" />\n                    <element name=\"ambiguousOption\"
+        type=\"tns:Option\" minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                </sequence>\n
+        \               <attribute name=\"chromeCode\" type=\"string\" />\n                <attribute
+        name=\"oemCode\" type=\"string\" />\n                <attribute name=\"altOptionCode\"
+        type=\"string\" />\n                <attribute name=\"standard\" type=\"boolean\"
+        />\n                <attribute name=\"optionKindId\" type=\"int\" />\n                <attribute
+        name=\"utf\" type=\"string\" />\n                <attribute name=\"fleetOnly\"
+        type=\"boolean\" />\n            </complexType>\n\n            <complexType
+        name=\"OptionPrice\">\n                <attribute name=\"unknown\" type=\"boolean\"
+        />\n                <attribute name=\"invoiceMin\" type=\"double\" />\n                <attribute
+        name=\"invoiceMax\" type=\"double\" />\n                <attribute name=\"msrpMin\"
+        type=\"double\" />\n                <attribute name=\"msrpMax\" type=\"double\"
+        />\n            </complexType>\n\n            <complexType name=\"GenericEquipment\">\n
+        \               <sequence>\n                    <choice>\n                        <element
+        name=\"categoryId\" type=\"int\" />\n                        <element name=\"definition\"
+        type=\"tns:CategoryDefinition\" />\n                    </choice>\n                    <sequence>\n
+        \                       <element name=\"styleId\" type=\"int\" minOccurs=\"0\"
+        maxOccurs=\"unbounded\" />\n                        <element name=\"installed\"
+        type=\"tns:InstallationCause\" minOccurs=\"0\" />\n                    </sequence>\n
+        \               </sequence>\n            </complexType>\n\n            <complexType
+        name=\"ConsumerInformation\">\n                <sequence>\n                    <element
+        name=\"type\" type=\"tns:IdentifiedString\" />\n                    <element
+        name=\"item\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n                        <complexType>\n
+        \                           <attribute name=\"name\" type=\"string\" use=\"required\"
+        />\n                            <attribute name=\"conditionNote\" type=\"string\"
+        />\n                            <attribute name=\"value\" type=\"string\"
+        />\n                        </complexType>\n                    </element>\n
+        \                   <element name=\"styleId\" type=\"int\" maxOccurs=\"unbounded\"
+        />\n                </sequence>\n            </complexType>\n\n            <complexType
+        name=\"TechnicalSpecification\">\n                <sequence>\n                    <choice>\n
+        \                       <element name=\"titleId\" type=\"int\" />\n                        <element
+        name=\"definition\" type=\"tns:TechnicalSpecificationDefinition\" />\n                    </choice>\n
+        \                   <sequence>\n                        <element name=\"range\"
+        minOccurs=\"0\">\n                            <complexType>\n                                <attribute
+        name=\"min\" type=\"double\" use=\"required\" />\n                                <attribute
+        name=\"max\" type=\"double\" use=\"required\" />\n                            </complexType>\n
+        \                       </element>\n                        <element name=\"value\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\">\n                            <complexType>\n
+        \                               <sequence>\n                                    <element
+        name=\"styleId\" type=\"int\" maxOccurs=\"unbounded\" />\n                                </sequence>\n
+        \                               <attribute name=\"value\" type=\"string\"
+        />\n                                <attribute name=\"condition\" type=\"string\"
+        />\n                            </complexType>\n                        </element>\n
+        \                   </sequence>\n                </sequence>\n            </complexType>\n\n
+        \           <complexType name=\"GenericColor\">\n                <sequence>\n
+        \                   <element name=\"installed\" type=\"tns:InstallationCause\"
+        minOccurs=\"0\" />\n                </sequence>\n                <attribute
+        name=\"name\" type=\"string\" use=\"required\" />\n                <attribute
+        name=\"primary\" type=\"boolean\" use=\"optional\" />\n            </complexType>\n\n
+        \           <complexType name=\"Color\">\n                <sequence>\n                    <element
+        name=\"genericColor\" type=\"tns:GenericColor\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                    <element name=\"styleId\" type=\"int\" maxOccurs=\"unbounded\"
+        />\n                    <element name=\"installed\" type=\"tns:InstallationCause\"
+        minOccurs=\"0\" />\n                </sequence>\n                <attribute
+        name=\"colorCode\" type=\"string\" use=\"required\" />\n                <attribute
+        name=\"colorName\" type=\"string\" use=\"required\" />\n                <attribute
+        name=\"rgbValue\" type=\"string\" />\n            </complexType>\n\n            <complexType
+        name=\"ResponseStatus\">\n                <sequence>\n                    <element
+        name=\"matchedEquipment\" type=\"tns:MatchedEquipment\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                    <element name=\"matchedNonFactoryEquipment\" type=\"tns:MatchedNonFactoryEquipment\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\" />\n                    <element name=\"status\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\">\n                        <complexType>\n
+        \                           <simpleContent>\n                                <extension
+        base=\"string\">\n                                    <attribute name=\"code\"
+        use=\"required\">\n                                        <simpleType>\n
+        \                                           <restriction base=\"string\">\n
+        \                                               <enumeration value=\"UnrecognizedTrimName\"
+        />\n                                                <enumeration value=\"UnusedTrimName\"
+        />\n                                                <enumeration value=\"UnrecognizedManufacturerModelCode\"
+        />\n                                                <enumeration value=\"UnusedManufacturerModelCode\"
+        />\n                                                <enumeration value=\"UnrecognizedStyleId\"
+        />\n                                                <enumeration value=\"UnusedReducingStyleId\"
+        />\n                                                <enumeration value=\"UnrecognizedReducingStyleId\"
+        />\n                                                <enumeration value=\"UnrecognizedWheelBase\"
+        />\n                                                <enumeration value=\"UnusedWheelBase\"
+        />\n                                                <enumeration value=\"UnrecognizedOptionCode\"
+        />\n                                                <enumeration value=\"UnusedOptionCode\"
+        />\n                                                <enumeration value=\"UnrecognizedEquipmentDescription\"
+        />\n                                                <enumeration value=\"UnrecognizedNonFactoryEquipmentDescription\"
+        />\n                                                <enumeration value=\"UnusedNonFactoryEquipmentDescription\"
+        />\n                                                <enumeration value=\"UsingAlternateLocale\"
+        />\n                                                <enumeration value=\"NameMatchNotFound\"
+        />\n                                                <enumeration value=\"VinNotCarriedByChrome\"
+        />\n                                                <enumeration value=\"InvalidVinCheckDigit\"
+        />\n                                                <enumeration value=\"InvalidVinCharacter\"
+        />\n                                                <enumeration value=\"InvalidVinLength\"
+        />\n                                                <enumeration value=\"UnrecognizedInteriorColor\"
+        />\n                                                <enumeration value=\"UnrecognizedExteriorColor\"
+        />\n                                                <enumeration value=\"UnrecognizedTechnicalSpecificationTitleId\"
+        />\n                                                <enumeration value=\"Unexpected\"
+        />\n                                            </restriction>\n                                        </simpleType>\n
+        \                                   </attribute>\n                                </extension>\n
+        \                           </simpleContent>\n                        </complexType>\n
+        \                   </element>\n                </sequence>\n                <attribute
+        name=\"responseCode\" use=\"required\">\n                    <simpleType>\n
+        \                       <restriction base=\"string\">\n                            <enumeration
+        value=\"Successful\" />\n                            <enumeration value=\"Unsuccessful\"
+        />\n                            <enumeration value=\"ConditionallySuccessful\"
+        />\n                        </restriction>\n                    </simpleType>\n
+        \               </attribute>\n                <attribute name=\"description\"
+        type=\"string\" />\n            </complexType>\n\n            <complexType
+        name=\"MatchedEquipment\">\n                <sequence>\n                    <element
+        name=\"equipmentDescription\" type=\"string\" />\n                    <element
+        name=\"categoryId\" type=\"int\" maxOccurs=\"unbounded\" />\n                </sequence>\n
+        \           </complexType>\n            <complexType name=\"MatchedNonFactoryEquipment\">\n
+        \               <sequence>\n                    <element name=\"equipmentDescription\"
+        type=\"string\" />\n                    <element name=\"category\" type=\"tns:CategoryDefinition\"
+        maxOccurs=\"unbounded\" />\n                    <element name=\"installed\"
+        type=\"tns:InstallationCause\" minOccurs=\"0\" />\n                </sequence>\n
+        \           </complexType>\n\n            <complexType name=\"IdentifiedString\">\n
+        \               <simpleContent>\n                    <extension base=\"string\">\n
+        \                       <attribute name=\"id\" type=\"int\" use=\"required\"
+        />\n                    </extension>\n                </simpleContent>\n            </complexType>\n\n
+        \           <complexType name=\"CategoryDefinition\">\n                <sequence>\n
+        \                   <element name=\"group\" type=\"tns:IdentifiedString\"
+        />\n                    <element name=\"header\" type=\"tns:IdentifiedString\"
+        />\n                    <element name=\"category\" type=\"tns:IdentifiedString\"
+        />\n                    <element name=\"type\" type=\"tns:IdentifiedString\"
+        minOccurs=\"0\" />\n                </sequence>\n            </complexType>\n\n
+        \           <element name=\"CategoryDefinitions\">\n                <complexType>\n
+        \                   <complexContent>\n                        <extension base=\"tns:BaseResponse\">\n
+        \                           <sequence>\n                                <element
+        name=\"category\" type=\"tns:CategoryDefinition\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                            </sequence>\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <complexType name=\"TechnicalSpecificationDefinition\">\n                <sequence>\n
+        \                   <element name=\"group\" type=\"tns:IdentifiedString\"
+        />\n                    <element name=\"header\" type=\"tns:IdentifiedString\"
+        />\n                    <element name=\"title\" type=\"tns:IdentifiedString\"
+        />\n                </sequence>\n                <attribute name=\"measurementUnit\"
+        type=\"string\" />\n            </complexType>\n\n            <element name=\"TechnicalSpecificationDefinitions\">\n
+        \               <complexType>\n                    <complexContent>\n                        <extension
+        base=\"tns:BaseResponse\">\n                            <sequence>\n                                <element
+        name=\"definition\" type=\"tns:TechnicalSpecificationDefinition\" minOccurs=\"0\"
+        maxOccurs=\"unbounded\" />\n                            </sequence>\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <complexType name=\"MediaGallery\">\n                <sequence>\n
+        \                   <element name=\"view\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n
+        \                       <complexType>\n                            <complexContent>\n
+        \                               <extension base=\"tns:Image\">\n                                    <attribute
+        name=\"shotCode\" type=\"string\" />\n                                    <attribute
+        name=\"backgroundDescription\" type=\"string\" use=\"optional\" />\n                                </extension>\n
+        \                           </complexContent>\n                        </complexType>\n
+        \                   </element>\n                    <element name=\"colorized\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\">\n                        <complexType>\n
+        \                           <complexContent>\n                                <extension
+        base=\"tns:Image\">\n                                    <attribute name=\"primaryColorOptionCode\"
+        type=\"string\" use=\"required\" />\n                                    <attribute
+        name=\"secondaryColorOptionCode\" type=\"string\" use=\"optional\" />\n                                    <attribute
+        name=\"match\" type=\"boolean\" use=\"optional\" />\n                                    <attribute
+        name=\"shotCode\" type=\"string\" />\n                                    <attribute
+        name=\"backgroundDescription\" type=\"string\" use=\"optional\" />\n                                    <attribute
+        name=\"primaryRGBHexCode\" type=\"string\" use=\"optional\" />\n                                    <attribute
+        name=\"secondaryRGBHexCode\" type=\"string\" use=\"optional\" />\n                                </extension>\n
+        \                           </complexContent>\n                        </complexType>\n
+        \                   </element>\n                </sequence>\n                <attribute
+        name=\"styleId\" type=\"int\" />\n            </complexType>\n\n            <complexType
+        name=\"Image\">\n                <attribute name=\"url\" type=\"string\" use=\"required\"
+        />\n                <attribute name=\"width\" type=\"int\" />\n                <attribute
+        name=\"height\" type=\"int\" />\n            </complexType>\n\n            <!--
+        /// Requests /// -->\n\n            <complexType name=\"BaseRequest\">\n                <sequence>\n
+        \                   <element name=\"accountInfo\" type=\"tns:AccountInfo\"
+        />\n                </sequence>\n            </complexType>\n\n            <element
+        name=\"VersionInfoRequest\" type=\"tns:BaseRequest\" />\n\n            <element
+        name=\"ModelYearsRequest\" type=\"tns:BaseRequest\" />\n\n            <element
+        name=\"DivisionsRequest\">\n                <complexType>\n                    <annotation>\n
+        \                       <documentation>Provides a list of Chrome division
+        ID's associated with the provided year.\n                        </documentation>\n
+        \                   </annotation>\n                    <complexContent>\n
+        \                       <extension base=\"tns:BaseRequest\">\n                            <attribute
+        name=\"modelYear\" type=\"int\" use=\"required\" />\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <element name=\"SubdivisionsRequest\">\n                <annotation>\n
+        \                   <documentation>Provides a list of Chrome subdivision ID's
+        associated with the provided year.\n                    </documentation>\n
+        \               </annotation>\n                <complexType>\n                    <complexContent>\n
+        \                       <extension base=\"tns:BaseRequest\">\n                            <attribute
+        name=\"modelYear\" type=\"int\" use=\"required\" />\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <element name=\"ModelsRequest\">\n                <annotation>\n
+        \                   <documentation>Provides a list of Chrome model ID's associated
+        with the provided year and\n                        (sub)division ID.\n                    </documentation>\n
+        \               </annotation>\n                <complexType>\n                    <complexContent>\n
+        \                       <extension base=\"tns:BaseRequest\">\n                            <sequence>\n
+        \                               <element name=\"modelYear\" type=\"int\" />\n
+        \                               <choice>\n                                    <element
+        name=\"divisionId\" type=\"int\" />\n                                    <element
+        name=\"subdivisionId\" type=\"int\" />\n                                </choice>\n
+        \                           </sequence>\n                        </extension>\n
+        \                   </complexContent>\n                </complexType>\n            </element>\n\n
+        \           <element name=\"StylesRequest\">\n                <annotation>\n
+        \                   <documentation>Provides a list of Chrome style ID's associated
+        with the provided model ID.\n                    </documentation>\n                </annotation>\n
+        \               <complexType>\n                    <complexContent>\n                        <extension
+        base=\"tns:BaseRequest\">\n                            <attribute name=\"modelId\"
+        type=\"int\" use=\"required\" />\n                        </extension>\n                    </complexContent>\n
+        \               </complexType>\n            </element>\n\n            <simpleType
+        name=\"Switch\">\n                <annotation>\n                    <documentation>Adding
+        one or more switch strings to your request will change the behavior of ADS.\n
+        \                       Use the following switches to match output with your
+        particular needs.\n                    </documentation>\n                </annotation>\n
+        \               <restriction base=\"string\">\n                    <enumeration
+        value=\"DisableSafeStandards\">\n                        <annotation>\n                            <documentation>By
+        default, only equipment that could not have been upgraded or removed will\n
+        \                               be presented as installed. When you use this
+        switch, any equipment that could\n                                be standard
+        equipment will be installed even if they could have been removed\n                                or
+        upgraded.\n                            </documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"ShowExtendedDescriptions\">\n
+        \                       <annotation>\n                            <documentation>Causes
+        ADS to provide additional description information for each piece of\n                                equipment.\n
+        \                           </documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"ShowAvailableEquipment\">\n
+        \                       <annotation>\n                            <documentation>Causes
+        ADS to show information about all equipment available for the vehicle,\n                                whether
+        or not it is installed.\n                            </documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"ShowConsumerInformation\">\n
+        \                       <annotation>\n                            <documentation>Causes
+        ADS to show normalized consumer information such as recalls, awards,\n                                and
+        test results.\n                            </documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"ShowExtendedTechnicalSpecifications\">\n
+        \                       <annotation>\n                            <documentation>Causes
+        ADS to show all available technical specifications for the vehicle,\n                                and
+        additional information about them.\n                            </documentation>\n
+        \                       </annotation>\n                    </enumeration>\n
+        \                   <enumeration value=\"IncludeRegionalVehicles\">\n                        <annotation>\n
+        \                           <documentation>By default, only vehicles sold
+        nationally are considered for description.\n                                This
+        switch causes ADS to also consider vehicles sold only regionally.\n                            </documentation>\n
+        \                       </annotation>\n                    </enumeration>\n
+        \                   <enumeration value=\"UseDependencyOrderingLogic\">\n                        <annotation>\n
+        \                           <documentation>By default, ADS describes and installs
+        only equipment specifically\n                                known to exist
+        (usually because of user input.) This switch causes ADS\n                                to
+        consider ordering logic caused by the installed equipment itself\n                                in
+        addition to the ordering logic of the user-identified equipment.\n                            </documentation>\n
+        \                       </annotation>\n                    </enumeration>\n
+        \                   <enumeration value=\"IncludeDefinitions\">\n                        <annotation>\n
+        \                           <documentation>Causes ADS to show Category and
+        Technical Specification definitions in-line within a vehicle description.</documentation>\n
+        \                       </annotation>\n                    </enumeration>\n
+        \               </restriction>\n            </simpleType>\n\n            <simpleType
+        name=\"SwitchAvailability\">\n\n                <restriction base=\"string\">\n
+        \                   <enumeration value=\"ExcludeFleetOnly\">\n                        <annotation>\n
+        \                           <documentation>Excludes Fleet Only information.
+        (Default is \"both.\")</documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"ExcludeRetailOnly\">\n
+        \                       <annotation>\n                            <documentation>Excludes
+        Retail Only information. (Default is \"both\".)</documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                </restriction>\n            </simpleType>\n\n
+        \           <simpleType name=\"SwitchChromeMediaGallery\">\n                <annotation>\n
+        \                   <documentation>Provides a Chrome Media Gallery URL's associated
+        with the described vehicle.\n                        Your user license dictates
+        which views (none, multi-view, colorMatch, or both) are\n                        available.
+        The default value is the most your license permits (hopefully \"both.\")\n
+        \                   </documentation>\n                </annotation>\n                <restriction
+        base=\"string\">\n                    <enumeration value=\"Multi-View\">\n
+        \                       <annotation>\n                            <documentation>Provide
+        Multi-view images, if the client license permits.</documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"ColorMatch\">\n
+        \                       <annotation>\n                            <documentation>Provide
+        ColorMatch images, if the client license permits.</documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                    <enumeration value=\"Both\">\n
+        \                       <annotation>\n                            <documentation>Provide
+        both image types, if the client license permits.</documentation>\n                        </annotation>\n
+        \                   </enumeration>\n                </restriction>\n            </simpleType>\n\n
+        \           <element name=\"VehicleDescriptionRequest\">\n                <annotation>\n
+        \                   <documentation>\n                        Describe a vehicle.
+        You must provide one of: vehicle identifier\n                        (VIN
+        or HIN); Chrome style ID; or year, make name, and model name. Optional input
+        fields can\n                        help identification by limiting color,
+        trim, wheelbase, and installed options.\n                    </documentation>\n
+        \               </annotation>\n                <complexType>\n                    <complexContent>\n
+        \                       <extension base=\"tns:BaseRequest\">\n                            <sequence>\n
+        \                               <choice>\n                                    <sequence>\n
+        \                                       <annotation>\n                                            <documentation>\n
+        \                                               Causes ADS to describe a vehicle
+        from a given year, make, and model. All\n                                                three
+        must be populated.\n                                            </documentation>\n
+        \                                       </annotation>\n                                        <element
+        name=\"modelYear\" type=\"int\" />\n                                        <element
+        name=\"makeName\" type=\"string\" />\n                                        <element
+        name=\"modelName\" type=\"string\" />\n                                    </sequence>\n
+        \                                   <sequence>\n                                        <annotation>\n
+        \                                           <documentation>\n                                                Causes
+        ADS to describe a vehicle from a given vehicle identifier (VIN\n                                                or
+        HIN.) You can optionally provide a known Chrome style ID to help\n                                                the
+        identification process.\n                                            </documentation>\n
+        \                                       </annotation>\n                                        <element
+        name=\"vin\" type=\"string\" />\n                                        <element
+        name=\"reducingStyleId\" type=\"int\" minOccurs=\"0\" />\n                                    </sequence>\n
+        \                                   <element name=\"styleId\" type=\"int\">\n
+        \                                       <annotation>\n                                            <documentation>Causes
+        ADS to find and describe the given vehicle.\n                                            </documentation>\n
+        \                                       </annotation>\n                                    </element>\n
+        \                               </choice>\n                                <element
+        name=\"trimName\" type=\"string\" minOccurs=\"0\">\n                                    <annotation>\n
+        \                                       <documentation>Trim names are typically
+        things like \"XLT\", \"Sport\" or \"Eddie\n                                            Bauer\".\n
+        \                                       </documentation>\n                                    </annotation>\n
+        \                               </element>\n                                <element
+        name=\"manufacturerModelCode\" type=\"string\" minOccurs=\"0\">\n                                    <annotation>\n
+        \                                       <documentation>MMC are typically things
+        like \"TK10743\"or \"CC10706\".\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"wheelBase\" type=\"double\"
+        minOccurs=\"0\">\n                                    <annotation>\n                                        <documentation>\n
+        \                                           Give wheel base in inches. ADS
+        will try to find vehicles where (1) the\n                                            wheel
+        base matters in the identification (usually Ford pickups) and (2)\n                                            within
+        +/- 2\" of the given value. Round to the nearest whole inch. If\n                                            you
+        don't, ADS will.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"OEMOptionCode\" type=\"string\"
+        minOccurs=\"0\" maxOccurs=\"unbounded\">\n                                    <annotation>\n
+        \                                       <documentation>\n                                            OEM
+        option codes are identifiers that manufacturers use to\n                                            identify
+        which options and packages to install on a specific vehicle. The\n                                            codes
+        to use are unique to each manufacturer and will look like \"FF3\" or\n                                            \"AJX\".
+        You can provide as many of these as you know, but only one per\n                                            element.\n
+        \                                       </documentation>\n                                    </annotation>\n
+        \                               </element>\n                                <element
+        name=\"equipmentDescription\" type=\"string\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n
+        \                                   <annotation>\n                                        <documentation>\n
+        \                                           Provide the name and or description
+        of equipment you know to be installed.\n                                            If
+        you know the manufacturer's actual name use it. Otherwise use the most\n                                            descriptive
+        name you can think of. You can provide as many of these as\n                                            you
+        know, but only one per element.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"exteriorColorName\" type=\"string\"
+        minOccurs=\"0\">\n                                    <annotation>\n                                        <documentation>\n
+        \                                           The name of the exterior color.
+        If you know the manufacturer's actual\n                                            color
+        name, use it. Otherwise use the most reasonable color you can\n                                            think
+        of.\n                                        </documentation>\n                                    </annotation>\n
+        \                               </element>\n                                <element
+        name=\"interiorColorName\" type=\"string\" minOccurs=\"0\">\n                                    <annotation>\n
+        \                                       <documentation>\n                                            The
+        name of the interior color or interior color pair. If you know the\n                                            manufacturer's
+        actual color name, use it. Otherwise use the most\n                                            reasonable
+        color you can think of.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"nonFactoryEquipmentDescription\"
+        type=\"string\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n                                    <annotation>\n
+        \                                       <documentation>\n                                            Provide
+        the name and or description of non-factory (aftermarket) equipment\n                                            you
+        know to be installed. This equipment will be listed as installed\n                                            non-factory
+        equipment, without validation against manufacturer's install\n                                            logic
+        and will not affect the identification or installation of factory\n                                            options,
+        packages or equipment. You can provide as many of these as\n                                            you
+        know, but only one per element.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n\n
+        \                               <!-- return parameters -->\n                                <element
+        name=\"switch\" type=\"tns:Switch\" minOccurs=\"0\" maxOccurs=\"unbounded\"
+        />\n                                <element name=\"vehicleProcessMode\" type=\"tns:SwitchAvailability\"
+        minOccurs=\"0\">\n                                    <annotation>\n                                        <documentation>The
+        default behavior of ADS is to include both fleet-only and\n                                            retail
+        only styles when discovering vehicles. Use this switch to tell\n                                            ADS
+        to ignore either or both.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"optionsProcessMode\" type=\"tns:SwitchAvailability\"
+        minOccurs=\"0\">\n                                    <annotation>\n                                        <documentation>The
+        default behavior of ADS is to include both fleet-only and\n                                            retail
+        only options when discovering equipment. Use this switch to tell\n                                            ADS
+        to ignore either or both.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"includeMediaGallery\" type=\"tns:SwitchChromeMediaGallery\"
+        minOccurs=\"0\">\n                                    <annotation>\n                                        <documentation>\n
+        \                                           If your license allows, ADS will
+        provide additional images (beyond the\n                                            stock
+        image) for each style described in the output. Chrome Media gallery\n                                            supports
+        \"colorMatch\" (where the image is the designated color), \"multiView\"\n
+        \                                           (where the vehicle is seen from
+        several angles) and \"both.\" See the\n                                            documentation
+        for the switch type for specific instructions.\n                                        </documentation>\n
+        \                                   </annotation>\n                                </element>\n
+        \                               <element name=\"includeTechnicalSpecificationTitleId\"
+        type=\"int\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n                                    <annotation>\n
+        \                                       <documentation>The default behavior
+        of ADS is to include all available technical specifications.\n                                            Use
+        this switch to tell ADS specific technical specifications (by title id) to
+        be shown.\n                                        </documentation>\n                                    </annotation>\n
+        \                               </element>\n                            </sequence>\n
+        \                       </extension>\n                    </complexContent>\n
+        \               </complexType>\n            </element>\n\n            <element
+        name=\"CategoryDefinitionsRequest\" type=\"tns:BaseRequest\">\n                <annotation>\n
+        \                   <documentation>\n                        Provide a list
+        of all available equipment category ID's.\n                    </documentation>\n
+        \               </annotation>\n            </element>\n\n            <element
+        name=\"TechnicalSpecificationDefinitionsRequest\" type=\"tns:BaseRequest\">\n
+        \               <annotation>\n                    <documentation>\n                        Provide
+        a list of all available technical specification definitions.\n                    </documentation>\n
+        \               </annotation>\n            </element>\n        </schema>\n
+        \   </types>\n\n    <message name=\"getVersionInfo\">\n        <part name=\"request\"
+        element=\"dtns:VersionInfoRequest\" />\n    </message>\n    <message name=\"getVersionInfoResponse\">\n
+        \       <part name=\"result\" element=\"dtns:VersionInfo\" />\n    </message>\n\n
+        \   <!-- selector -->\n    <message name=\"getModelYears\">\n        <part
+        name=\"request\" element=\"dtns:ModelYearsRequest\" />\n    </message>\n    <message
+        name=\"getModelYearsResponse\">\n        <part name=\"result\" element=\"dtns:ModelYears\"
+        />\n    </message>\n    <message name=\"getDivisions\">\n        <part name=\"request\"
+        element=\"dtns:DivisionsRequest\" />\n    </message>\n    <message name=\"getDivisionsResponse\">\n
+        \       <part name=\"result\" element=\"dtns:Divisions\" />\n    </message>\n
+        \   <message name=\"getSubdivisions\">\n        <part name=\"request\" element=\"dtns:SubdivisionsRequest\"
+        />\n    </message>\n    <message name=\"getSubdivisionsResponse\">\n        <part
+        name=\"result\" element=\"dtns:Subdivisions\" />\n    </message>\n    <message
+        name=\"getModels\">\n        <part name=\"request\" element=\"dtns:ModelsRequest\"
+        />\n    </message>\n    <message name=\"getModelsResponse\">\n        <part
+        name=\"result\" element=\"dtns:Models\" />\n    </message>\n    <message name=\"getStyles\">\n
+        \       <part name=\"request\" element=\"dtns:StylesRequest\" />\n    </message>\n
+        \   <message name=\"getStylesResponse\">\n        <part name=\"result\" element=\"dtns:Styles\"
+        />\n    </message>\n\n    <!-- vehicle -->\n    <message name=\"describeVehicle\">\n
+        \       <part name=\"request\" element=\"dtns:VehicleDescriptionRequest\"
+        />\n    </message>\n    <message name=\"describeVehicleResponse\">\n        <part
+        name=\"result\" element=\"dtns:VehicleDescription\" />\n    </message>\n\n
+        \   <!-- lookup -->\n    <message name=\"getCategoryDefinitions\">\n        <part
+        name=\"request\" element=\"dtns:CategoryDefinitionsRequest\" />\n    </message>\n
+        \   <message name=\"getCategoryDefinitionsResponse\">\n        <part name=\"result\"
+        element=\"dtns:CategoryDefinitions\" />\n    </message>\n\n    <message name=\"getTechnicalSpecificationDefinitions\">\n
+        \       <part name=\"request\" element=\"dtns:TechnicalSpecificationDefinitionsRequest\"
+        />\n    </message>\n    <message name=\"getTechnicalSpecificationDefinitionsResponse\">\n
+        \       <part name=\"result\" element=\"dtns:TechnicalSpecificationDefinitions\"
+        />\n    </message>\n\n    <portType name=\"Description7aPortType\">\n\n        <operation
+        name=\"getVersionInfo\">\n            <input message=\"dtns:getVersionInfo\"
+        />\n            <output message=\"dtns:getVersionInfoResponse\" />\n        </operation>\n\n
+        \       <!-- selector -->\n        <operation name=\"getModelYears\">\n            <input
+        message=\"dtns:getModelYears\" />\n            <output message=\"dtns:getModelYearsResponse\"
+        />\n        </operation>\n        <operation name=\"getDivisions\">\n            <input
+        message=\"dtns:getDivisions\" />\n            <output message=\"dtns:getDivisionsResponse\"
+        />\n        </operation>\n        <operation name=\"getSubdivisions\">\n            <input
+        message=\"dtns:getSubdivisions\" />\n            <output message=\"dtns:getSubdivisionsResponse\"
+        />\n        </operation>\n        <operation name=\"getModels\">\n            <input
+        message=\"dtns:getModels\" />\n            <output message=\"dtns:getModelsResponse\"
+        />\n        </operation>\n        <operation name=\"getStyles\">\n            <input
+        message=\"dtns:getStyles\" />\n            <output message=\"dtns:getStylesResponse\"
+        />\n        </operation>\n\n        <!-- vehicle -->\n        <operation name=\"describeVehicle\">\n
+        \           <input message=\"dtns:describeVehicle\" />\n            <output
+        message=\"dtns:describeVehicleResponse\" />\n        </operation>\n\n        <!--
+        lookup -->\n        <operation name=\"getCategoryDefinitions\">\n            <input
+        message=\"dtns:getCategoryDefinitions\" />\n            <output message=\"dtns:getCategoryDefinitionsResponse\"
+        />\n        </operation>\n        <operation name=\"getTechnicalSpecificationDefinitions\">\n
+        \           <input message=\"dtns:getTechnicalSpecificationDefinitions\" />\n
+        \           <output message=\"dtns:getTechnicalSpecificationDefinitionsResponse\"
+        />\n        </operation>\n\n\n    </portType>\n\n    <binding name=\"Description7aBinding\"
+        type=\"dtns:Description7aPortType\">\n        <soap:binding style=\"document\"
+        transport=\"http://schemas.xmlsoap.org/soap/http\" />\n\n        <operation
+        name=\"getVersionInfo\">\n            <soap:operation soapAction=\"\" />\n
+        \           <input>\n                <soap:body use=\"literal\" />\n            </input>\n
+        \           <output>\n                <soap:body use=\"literal\" />\n            </output>\n
+        \       </operation>\n\n        <!-- selector -->\n        <operation name=\"getModelYears\">\n
+        \           <soap:operation soapAction=\"\" />\n            <input>\n                <soap:body
+        use=\"literal\" />\n            </input>\n            <output>\n                <soap:body
+        use=\"literal\" />\n            </output>\n        </operation>\n        <operation
+        name=\"getDivisions\">\n            <soap:operation soapAction=\"\" />\n            <input>\n
+        \               <soap:body use=\"literal\" />\n            </input>\n            <output>\n
+        \               <soap:body use=\"literal\" />\n            </output>\n        </operation>\n
+        \       <operation name=\"getSubdivisions\">\n            <soap:operation
+        soapAction=\"\" />\n            <input>\n                <soap:body use=\"literal\"
+        />\n            </input>\n            <output>\n                <soap:body
+        use=\"literal\" />\n            </output>\n        </operation>\n        <operation
+        name=\"getModels\">\n            <soap:operation soapAction=\"\" />\n            <input>\n
+        \               <soap:body use=\"literal\" />\n            </input>\n            <output>\n
+        \               <soap:body use=\"literal\" />\n            </output>\n        </operation>\n
+        \       <operation name=\"getStyles\">\n            <soap:operation soapAction=\"\"
+        />\n            <input>\n                <soap:body use=\"literal\" />\n            </input>\n
+        \           <output>\n                <soap:body use=\"literal\" />\n            </output>\n
+        \       </operation>\n\n        <!-- vehicle -->\n        <operation name=\"describeVehicle\">\n
+        \           <soap:operation soapAction=\"\" />\n            <input>\n                <soap:body
+        use=\"literal\" />\n            </input>\n            <output>\n                <soap:body
+        use=\"literal\" />\n            </output>\n        </operation>\n\n        <!--
+        lookup -->\n        <operation name=\"getCategoryDefinitions\">\n            <soap:operation
+        soapAction=\"\" />\n            <input>\n                <soap:body use=\"literal\"
+        />\n            </input>\n            <output>\n                <soap:body
+        use=\"literal\" />\n            </output>\n        </operation>\n\n        <operation
+        name=\"getTechnicalSpecificationDefinitions\">\n            <soap:operation
+        soapAction=\"\" />\n            <input>\n                <soap:body use=\"literal\"
+        />\n            </input>\n            <output>\n                <soap:body
+        use=\"literal\" />\n            </output>\n        </operation>\n\n    </binding>\n\n
+        \   <service name=\"Description7a\">\n        <port name=\"Description7aPort\"
+        binding=\"dtns:Description7aBinding\">\n            <soap:address location=\"http://services.chromedata.com:80/Description/7a\"
+        />\n        </port>\n    </service>\n</definitions>"
+    http_version: 
+  recorded_at: Tue, 19 Mar 2013 23:48:17 GMT
+recorded_with: VCR 2.4.0

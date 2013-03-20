@@ -1,4 +1,7 @@
 require "chrome_data/version"
+require "chrome_data/base"
+require "chrome_data/division"
+
 require "symboltable"
 
 module ChromeData
@@ -8,7 +11,12 @@ module ChromeData
     yield config
   end
 
+  # Valid options:
+  #   account_number
+  #   account_secret
+  #   country (default: 'US')
+  #   language (default: 'en')
   def config
-    @@config ||= SymbolTable.new
+    @@config ||= SymbolTable.new country: 'US', language: 'en'
   end
 end
