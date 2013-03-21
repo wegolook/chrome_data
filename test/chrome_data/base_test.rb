@@ -21,16 +21,7 @@ describe ChromeData::Base do
     end
 
     it 'uses appropriate cache key' do
-      ChromeData.config.cache_store = stub('cache', exist?: false)
-
-      base = stub('base')
-      ChromeData::Base.stubs(:new).returns base
-
-      ChromeData::Base.stubs(:build_request).returns stub_everything('request')
-      ChromeData::Base.stubs(:parse_response).returns [stub('element', attributes: { 'id' => stub('id', value: '1') }, text: 'Foo')]
-      ChromeData::Base.stubs(:make_request).returns stub('response')
-
-      ChromeData.cache.expects(:write).with('get_bases-model_year-2013-division_id-5', [base])
+      ChromeData::Base.expects(:cache).with('get_bases-model_year-2013-division_id-5')
 
       ChromeData::Base.request('modelYear' => 2013, 'divisionId' => 5)
     end
