@@ -4,8 +4,13 @@
 
 module ChromeData
   class ModelYear
+
+    # Chrome Data returns years in the opposite order, but that's not typically
+    # how selects are built, so they're reversed here,
+    # since that's the only purpose that I can see for this method.
     def self.all
-      (1981..Time.now.year + 1).to_a
+      (Time.now.year + 1).downto(1981).to_a
     end
+
   end
 end
