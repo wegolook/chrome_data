@@ -1,6 +1,5 @@
 module ChromeData
-  class Division < Base
-    extend Parsers::Collection
+  class Division < CollectionRequest
 
     def models_for_year(year)
       Model.find_all_by_year_and_division_id year, id

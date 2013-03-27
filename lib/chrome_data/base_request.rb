@@ -2,9 +2,7 @@ require "net/http"
 require "lolsoap"
 
 module ChromeData
-  class Base
-    attr_accessor :id, :name
-
+  class BaseRequest
     def initialize(attrs)
       attrs.each do |k, v|
         send "#{k}=", v
@@ -12,11 +10,6 @@ module ChromeData
     end
 
     class << self
-      def request_name
-        # Cheap-o inflector
-        "get#{name.split('::').last}s"
-      end
-
       # Builds request, sets additional data on request element, makes request,
       # and returns array of child elements wrapped in instances of this class
       def request(data)
@@ -80,6 +73,10 @@ module ChromeData
       # Internal: Given a LolSoap::Response, returns appropriately parsed response
       def parse_response(response)
         raise NotImplementedError, '.parse_response should be implemented in subclass'
+      end
+
+      def request_name
+        raise NotImplementedError, '.request_name should be implemented in subclass'
       end
     end
   end
