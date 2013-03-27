@@ -11,7 +11,9 @@ describe ChromeData::Model do
         c.account_number = '123456'
         c.account_secret = '1111111111111111'
       end
+    end
 
+    def find_models
       VCR.use_cassette('wsdl') do
         VCR.use_cassette('2013/divisions/13/models') do
           @models = ChromeData::Model.find_all_by_year_and_division_id(2013, 13) # 2013 Fords
@@ -20,16 +22,28 @@ describe ChromeData::Model do
     end
 
     it 'returns array of Model objects' do
+      find_models
+
       @models.first.must_be_instance_of ChromeData::Model
       @models.size.must_equal 39
     end
 
     it 'sets ID on Model objects' do
+      find_models
+
       @models.first.id.must_equal 25459
     end
 
     it 'sets name on Model objects' do
+      find_models
+
       @models.first.name.must_equal 'C-Max Energi'
+    end
+
+    it 'caches with proper key' do
+      ChromeData.expects(:cache).with('get_models-model_year-2013-division_id-13')
+
+      find_models
     end
   end
 

@@ -11,7 +11,9 @@ describe ChromeData::Division do
         c.account_number = '123456'
         c.account_secret = '1111111111111111'
       end
+    end
 
+    def find_divisions
       VCR.use_cassette('wsdl') do
         VCR.use_cassette('2013/divisions') do
           @divisions = ChromeData::Division.find_all_by_year(2013)
@@ -20,16 +22,28 @@ describe ChromeData::Division do
     end
 
     it 'returns array of Division objects' do
+      find_divisions
+
       @divisions.first.must_be_instance_of ChromeData::Division
       @divisions.size.must_equal 38
     end
 
     it 'sets ID on Division objects' do
+      find_divisions
+
       @divisions.first.id.must_equal 1
     end
 
     it 'sets name on Division objects' do
+      find_divisions
+
       @divisions.first.name.must_equal 'Acura'
+    end
+
+    it 'caches with proper key' do
+      ChromeData.expects(:cache).with('get_divisions-model_year-2013')
+
+      find_divisions
     end
   end
 

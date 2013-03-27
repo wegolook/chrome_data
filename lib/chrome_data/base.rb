@@ -20,39 +20,37 @@ module ChromeData
       # Builds request, sets additional data on request element, makes request,
       # and returns array of child elements wrapped in instances of this class
       def request(data)
-        cache cache_key(data) do
-          request = build_request
+        request = build_request
 
-          request.body do |b|
-            # Set configured account info on builder
-            b.accountInfo(
-              number: ChromeData.config.account_number,
-              secret: ChromeData.config.account_secret,
-              country: ChromeData.config.country,
-              language: ChromeData.config.language
-            )
+        request.body do |b|
+          # Set configured account info on builder
+          b.accountInfo(
+            number: ChromeData.config.account_number,
+            secret: ChromeData.config.account_secret,
+            country: ChromeData.config.country,
+            language: ChromeData.config.language
+          )
 
-            # Set additional elements on builder
-            data.each do |k, v|
-              # Add the key/value pair as an attribute to the request element if that's what it should be,
-              # otherwise add it as a sub-element
-              # NOTE: This basically mirrors LolSoap::Builder#method_missing
-              #       because Builder undefines most methods, including #send
-              if b.__type__.has_attribute?(k)
-                b.__attribute__ k, v
-              else
-                b.__tag__ k, v
-              end
+          # Set additional elements on builder
+          data.each do |k, v|
+            # Add the key/value pair as an attribute to the request element if that's what it should be,
+            # otherwise add it as a sub-element
+            # NOTE: This basically mirrors LolSoap::Builder#method_missing
+            #       because Builder undefines most methods, including #send
+            if b.__type__.has_attribute?(k)
+              b.__attribute__ k, v
+            else
+              b.__tag__ k, v
             end
           end
+        end
 
-          # Make the request
-          response = make_request(request)
+        # Make the request
+        response = make_request(request)
 
-          # Find elements matching class name and instantiate them using their id attribute and text
-          parse_response(response).map do |e|
-            new id: e.attributes['id'].value.to_i, name: e.text
-          end
+        # Find elements matching class name and instantiate them using their id attribute and text
+        parse_response(response).map do |e|
+          new id: e.attributes['id'].value.to_i, name: e.text
         end
       end
 
@@ -82,22 +80,9 @@ module ChromeData
         @@endpoint_uri ||= URI(client.wsdl.endpoint)
       end
 
-      # Internal: Returns a cache key for a given request data hash
-      def cache_key(data)
-        "#{request_name.underscore}-#{data.flatten.map{|s| s.to_s.underscore}.join('-')}"
-      end
-
       # Internal: Given a LolSoap::Response, returns an array of Nokogiri::XML::Elements that map to this class
       def parse_response(response)
         response.body.xpath(".//x:#{name.split('::').last.downcase}", 'x' => response.body.namespace.href)
-      end
-
-      def cache(key, &blk)
-        if ChromeData.cache
-          ChromeData.cache.fetch key, &blk
-        else
-          blk.call
-        end
       end
     end
   end
