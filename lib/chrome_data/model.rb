@@ -7,7 +7,7 @@ module ChromeData
     end
 
     def self.find_all_by_year_and_division_id(year, division_id)
-      ChromeData.cache "get_models-model_year-#{year}-division_id-#{division_id}" do
+      ChromeData.cache "#{request_name.underscore}-model_year-#{year}-division_id-#{division_id}" do
         request 'modelYear' => year, 'divisionId' => division_id
       end
     end
