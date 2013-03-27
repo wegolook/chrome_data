@@ -48,10 +48,7 @@ module ChromeData
         # Make the request
         response = make_request(request)
 
-        # Find elements matching class name and instantiate them using their id attribute and text
-        parse_response(response).map do |e|
-          new id: e.attributes['id'].value.to_i, name: e.text
-        end
+        parse_response(response)
       end
 
       # Makes request, returns LolSoap::Response
@@ -80,9 +77,9 @@ module ChromeData
         @@endpoint_uri ||= URI(client.wsdl.endpoint)
       end
 
-      # Internal: Given a LolSoap::Response, returns an array of Nokogiri::XML::Elements that map to this class
+      # Internal: Given a LolSoap::Response, returns appropriately parsed response
       def parse_response(response)
-        response.body.xpath(".//x:#{name.split('::').last.downcase}", 'x' => response.body.namespace.href)
+        raise NotImplementedError, '.parse_response should be implemented in subclass'
       end
     end
   end

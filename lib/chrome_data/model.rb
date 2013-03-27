@@ -1,5 +1,7 @@
 module ChromeData
   class Model < Base
+    extend Parsers::Collection
+
     def styles
       Style.find_all_by_model_id id
     end
