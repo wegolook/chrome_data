@@ -1,6 +1,8 @@
 module ChromeData
   class Vehicle < BaseRequest
-    attr_accessor :model_year, :division, :model, :styles
+    class Engine < Struct.new(:type); end
+
+    attr_accessor :model_year, :division, :model, :styles, :engines
 
     class << self
       def request_name
@@ -25,6 +27,10 @@ module ChromeData
                 trim: e.attributes['trim'].value,
                 name_without_trim: e.attributes['nameWoTrim'].value,
               )
+            end
+
+            v.engines = find_elements('engine', response).map do |e|
+              Engine.new(e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text)
             end
           end
         end
