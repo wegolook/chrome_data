@@ -3,7 +3,7 @@ require "lolsoap"
 
 module ChromeData
   class BaseRequest
-    def initialize(attrs)
+    def initialize(attrs={})
       attrs.each do |k, v|
         send "#{k}=", v
       end
@@ -68,6 +68,11 @@ module ChromeData
 
       def endpoint_uri
         @@endpoint_uri ||= URI(client.wsdl.endpoint)
+      end
+
+      # Given an element_name and LolSoap::Response, returns an array of Nokogiri::XML::Elements
+      def find_elements(element_name, response)
+        response.body.xpath(".//x:#{element_name}", 'x' => response.body.namespace.href)
       end
 
       # Internal: Given a LolSoap::Response, returns appropriately parsed response

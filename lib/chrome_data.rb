@@ -6,6 +6,7 @@ require "chrome_data/division"
 require "chrome_data/model"
 require "chrome_data/style"
 require "chrome_data/model_year"
+require "chrome_data/vehicle"
 require 'active_support/cache'
 
 require "symboltable"

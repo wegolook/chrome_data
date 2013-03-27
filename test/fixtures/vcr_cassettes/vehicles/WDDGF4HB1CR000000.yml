@@ -1,0 +1,276 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://services.chromedata.com/Description/7a
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\"?>\n<soap:Envelope xmlns:dtns=\"urn:description7a.services.chrome.com\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Header/>\n
+        \ <soap:Body>\n    <dtns:VehicleDescriptionRequest>\n      <dtns:accountInfo
+        number=\"123456\" secret=\"1111111111111111\" country=\"US\" language=\"en\"/>\n
+        \     <dtns:vin>WDDGF4HB1CR000000</dtns:vin>\n    </dtns:VehicleDescriptionRequest>\n
+        \ </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '422'
+      Soapaction:
+      - ''
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Mar 2013 23:06:04 GMT
+      Server:
+      - Apache
+      P3p:
+      - CP="NOI ADMa CUR DEVa OUR IND TAI BUS UNI"
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml;charset=utf-8
+      Chrome:
+      - '219'
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0'' encoding=''UTF-8''?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><VehicleDescription
+        xmlns="urn:description7a.services.chrome.com" country="US" language="en" modelYear="2012"
+        bestMakeName="Mercedes-Benz" bestModelName="C-Class" bestStyleName="4dr Sdn
+        C250 RWD" bestTrimName="C250"><responseStatus responseCode="ConditionallySuccessful"
+        description="ConditionallySuccessful"><status code="InvalidVinCheckDigit">Failed
+        checksum or bad check digit.</status></responseStatus><vinDescription vin="WDDGF4HB1CR000000"
+        modelYear="2012" division="Mercedes-Benz" modelName="C-Class" styleName="4dr
+        Sdn 1.8L RWD" bodyType="Sedan" drivingWheels="Rear"><WorldManufacturerIdentifier>Germany
+        Vehicles - all types </WorldManufacturerIdentifier><restraintTypes><group
+        id="9">Safety</group><header id="38">Air Bag - Frontal</header><category id="1001">Driver
+        Air Bag</category></restraintTypes><restraintTypes><group id="9">Safety</group><header
+        id="38">Air Bag - Frontal</header><category id="1002">Passenger Air Bag</category></restraintTypes><restraintTypes><group
+        id="9">Safety</group><header id="38">Air Bag - Frontal</header><category id="1004">Passenger
+        Air Bag On/Off Switch</category></restraintTypes><restraintTypes><group id="9">Safety</group><header
+        id="39">Air Bag - Side</header><category id="1005">Front Side Air Bag</category></restraintTypes><restraintTypes><group
+        id="9">Safety</group><header id="39">Air Bag - Side</header><category id="1007">Front
+        Head Air Bag</category></restraintTypes><restraintTypes><group id="9">Safety</group><header
+        id="39">Air Bag - Side</header><category id="1008">Rear Head Air Bag</category></restraintTypes><marketClass
+        id="43">4-door Compact Passenger Car</marketClass></vinDescription><style
+        id="337364" modelYear="2012" name="4dr Sdn C250 Sport RWD" nameWoTrim="4dr
+        Sdn RWD" trim="C250 Sport" mfrModelCode="C250W" fleetOnly="false" modelFleet="false"
+        passDoors="4" altModelName="C250" altStyleName="C250 Sport Sedan" altBodyType="4dr
+        Car" drivetrain="Rear Wheel Drive"><division id="27">Mercedes-Benz</division><subdivision
+        id="6957">Mercedes-Benz</subdivision><model id="21771">C-Class</model><basePrice
+        unknown="false" invoice="32364.0" msrp="34800.0" destination="875.0"/><bodyType
+        primary="true" id="2">4dr Car</bodyType><marketClass id="43">4-door Compact
+        Passenger Car</marketClass><stockImage filename="14364.jpg" url="http://media.carbook.com/autoBuilderData/stockPhotos/14364.jpg"
+        width="400" height="200"/></style><style id="337365" modelYear="2012" name="4dr
+        Sdn C250 Luxury RWD" nameWoTrim="4dr Sdn RWD" trim="C250 Luxury" mfrModelCode="C250W"
+        fleetOnly="false" modelFleet="false" passDoors="4" altModelName="C250" altStyleName="C250
+        Luxury Sedan" altBodyType="4dr Car" drivetrain="Rear Wheel Drive"><division
+        id="27">Mercedes-Benz</division><subdivision id="6957">Mercedes-Benz</subdivision><model
+        id="21771">C-Class</model><basePrice unknown="false" invoice="32755.0" msrp="35220.0"
+        destination="875.0"/><bodyType primary="true" id="2">4dr Car</bodyType><marketClass
+        id="43">4-door Compact Passenger Car</marketClass><stockImage filename="14364.jpg"
+        url="http://media.carbook.com/autoBuilderData/stockPhotos/14364.jpg" width="400"
+        height="200"/></style><engine highOutput="false"><engineType id="1048">4 Cylinder
+        Engine</engineType><fuelType id="1059">Gasoline Fuel</fuelType><horsepower
+        value="201.0" rpm="5500"/><netTorque value="229.0" rpm="2200"/><cylinders>4</cylinders><displacement
+        liters="1.8" cubicIn="110"/><fuelEconomy unit="MPG"><city low="21.0" high="21.0"/><hwy
+        low="31.0" high="31.0"/></fuelEconomy><fuelCapacity unit="gal" low="17.4"
+        high="17.4"/><forcedInduction id="1054">Turbocharged</forcedInduction><installed
+        cause="VIN"/></engine><standard><header id="1236">MECHANICAL</header><description>1.8L
+        16-valve I4 turbocharged engine</description><category id="1048"/><category
+        id="1054"/><category id="1059"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="Engine"/></standard><standard><header id="1236">MECHANICAL</header><description>7-speed
+        automatic transmission -inc: Touch Shift</description><category id="1130"/><category
+        id="1195"/><category id="1210"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>Rear
+        wheel drive</description><category id="1043"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>Independent
+        3-link front suspension -inc: anti-dive geometry, coil springs over gas shocks</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>Independent
+        5-arm multi-link rear suspension -inc: separate coil springs, gas shocks</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>Front/rear
+        stabilizer bar</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>Pwr
+        rack &amp; pinion steering</description><category id="1084"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>4-wheel
+        anti-lock disc brake system (ABS) w/brake assist system (BAS)</description><category
+        id="1018"/><category id="1020"/><category id="1228"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>ADAPTIVE
+        BRAKE w/hold function</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1236">MECHANICAL</header><description>Dual
+        exhaust w/chrome tips</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1176">EXTERIOR</header><description>P225/45R17
+        front &amp; P245/40R17 rear all-season performance tires</description><category
+        id="1092"/><category id="1097"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1176">EXTERIOR</header><description>Temporary
+        spare tire w/steel wheel</description><category id="1098"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1176">EXTERIOR</header><description>Front
+        halogen fog lamps</description><category id="1151"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1176">EXTERIOR</header><description>Single
+        rear red fog lamp</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1176">EXTERIOR</header><description>LED
+        tail lamps</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1176">EXTERIOR</header><description>Pwr
+        heated signal mirrors</description><category id="1064"/><category id="1065"/><category
+        id="1174"/><styleId>337364</styleId><styleId>337365</styleId><installed cause="BaseEquipment"/></standard><standard><header
+        id="1176">EXTERIOR</header><description>Rain-sensing wipers</description><category
+        id="1127"/><category id="1159"/><category id="1160"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="10689">ENTERTAINMENT</header><description>Bluetooth
+        hands-free communication system</description><category id="1211"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Floor
+        mats</description><category id="1055"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Leather-wrapped
+        sport steering wheel w/multi-function controls</description><category id="1161"/><category
+        id="1192"/><styleId>337364</styleId><styleId>337365</styleId><installed cause="BaseEquipment"/></standard><standard><header
+        id="1220">INTERIOR</header><description>5.8&quot; central controller display
+        w/retractable cover</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Multi-function
+        display in instrument cluster -inc: trip computer, exterior temp gauge, oil
+        level check, digital speedometer, audio status, reminder &amp; malfunction
+        messages, driver-programmable settings</description><category id="1203"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Mercedes-Benz
+        Maintenance System display</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Pwr
+        windows w/1-touch up/down</description><category id="1126"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Cruise
+        control</description><category id="1033"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Anti-theft
+        alarm system</description><category id="1013"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Homelink
+        garage door opener</description><category id="1204"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Automatic
+        dual-zone climate control -inc: dust &amp; pollen filters, tunnel mode w/1-touch
+        closing of all windows, sun sensor</description><category id="1009"/><category
+        id="1010"/><category id="1011"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Rear
+        window defroster w/auto-shutoff</description><category id="1034"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Front/rear
+        cupholders</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Aux
+        pwr outlet</description><category id="1164"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Auto-dimming
+        rearview mirror w/compass</description><category id="1173"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Dual
+        illuminated visor vanity mirrors</description><category id="1175"/><category
+        id="1176"/><category id="1177"/><category id="1178"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1220">INTERIOR</header><description>Night
+        security illumination</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Electronic
+        stability program (ESP)</description><category id="1100"/><category id="1227"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>LED
+        daytime running lamps</description><category id="1061"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Driver
+        &amp; front passenger dual-stage air bags w/front passenger adaptive feature</description><category
+        id="1001"/><category id="1002"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Front/rear
+        window curtain airbags</description><category id="1007"/><category id="1008"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Front
+        side-impact airbags</description><category id="1005"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Dual
+        front pelvic airbags</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Driver
+        knee airbag</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>ATTENTION
+        ASSIST drowsiness monitor</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>3-point
+        driver &amp; front passenger shoulder belts -inc: height adjustment, emergency
+        tensioning device, adaptive belt force limiter</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Rear
+        3-point seat belts -inc: outboard emergency tensioning device, outboard belt
+        force limiter, outboard automatic height adjustment</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Outboard
+        rear universal lower anchors &amp; tethers for children (LATCH)</description><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Child
+        safety rear door locks</description><category id="1039"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><standard><header id="1343">SAFETY</header><description>Tire
+        pressure monitoring system</description><category id="1202"/><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></standard><genericEquipment><categoryId>1001</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="VIN"/></genericEquipment><genericEquipment><categoryId>1002</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="VIN"/></genericEquipment><genericEquipment><categoryId>1004</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="VIN"/></genericEquipment><genericEquipment><categoryId>1005</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="VIN"/></genericEquipment><genericEquipment><categoryId>1007</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="VIN"/></genericEquipment><genericEquipment><categoryId>1008</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="VIN"/></genericEquipment><genericEquipment><categoryId>1009</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1010</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1011</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1013</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1014</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1017</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1018</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1020</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1033</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1034</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1039</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1043</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1048</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="Engine"/></genericEquipment><genericEquipment><categoryId>1054</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="Engine"/></genericEquipment><genericEquipment><categoryId>1055</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1059</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="Engine"/></genericEquipment><genericEquipment><categoryId>1061</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1062</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1063</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1064</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1065</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1069</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1074</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1075</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1082</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1084</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1087</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1092</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1097</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1098</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1100</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1123</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1126</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1127</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1130</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1132</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1136</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1150</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1151</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1159</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1160</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1161</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1164</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1166</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1169</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1173</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1174</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1175</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1176</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1177</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1178</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1189</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1190</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1192</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1195</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1202</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1203</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1204</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1210</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1211</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1227</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1228</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1230</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><genericEquipment><categoryId>1299</categoryId><styleId>337364</styleId><styleId>337365</styleId><installed
+        cause="BaseEquipment"/></genericEquipment><technicalSpecification><titleId>10</titleId><range
+        min="3319.0" max="3319.0"/><value value="3319" condition=""><styleId>337364</styleId><styleId>337365</styleId></value></technicalSpecification><technicalSpecification><titleId>304</titleId><range
+        min="180.8" max="180.8"/><value value="180.8" condition=""><styleId>337364</styleId><styleId>337365</styleId></value></technicalSpecification><technicalSpecification><titleId>305</titleId><range
+        min="69.7" max="69.7"/><value value="69.7" condition=""><styleId>337364</styleId><styleId>337365</styleId></value></technicalSpecification><technicalSpecification><titleId>306</titleId><range
+        min="56.3" max="56.9"/><value value="56.3" condition=""><styleId>337364</styleId></value><value
+        value="56.9" condition=""><styleId>337365</styleId></value></technicalSpecification><basePrice
+        unknown="false"><invoice low="32364.0" high="32755.0"/><msrp low="34800.0"
+        high="35220.0"/><destination low="875.0" high="875.0"/></basePrice></VehicleDescription></S:Body></S:Envelope>'
+    http_version:
+  recorded_at: Wed, 27 Mar 2013 23:06:05 GMT
+recorded_with: VCR 2.4.0
