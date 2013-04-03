@@ -55,6 +55,18 @@ describe ChromeData::Vehicle do
         @vehicle.styles[0].name_without_trim.must_equal '4dr Sdn RWD'
         @vehicle.styles[1].name_without_trim.must_equal '4dr Sdn RWD'
       end
+
+      describe 'body_types' do
+        it 'sets name' do
+          @vehicle.styles[0].body_types[0].name.must_equal '4dr Car'
+          @vehicle.styles[1].body_types[0].name.must_equal '4dr Car'
+        end
+
+        it 'sets id' do
+          @vehicle.styles[0].body_types[0].id.must_equal 2
+          @vehicle.styles[1].body_types[0].id.must_equal 2
+        end
+      end
     end
 
     describe 'engines' do

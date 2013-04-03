@@ -26,6 +26,9 @@ module ChromeData
                 name: e.attributes['name'].value,
                 trim: e.attributes['trim'].value,
                 name_without_trim: e.attributes['nameWoTrim'].value,
+                body_types: e.xpath("x:bodyType", 'x' => response.body.namespace.href).map do |bt|
+                  Style::BodyType.new(bt.attributes['id'].value.to_i, bt.text)
+                end
               )
             end
 
