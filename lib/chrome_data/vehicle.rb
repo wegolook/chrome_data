@@ -16,18 +16,18 @@ module ChromeData
       def parse_response(response)
         if vin_description = find_elements('vinDescription', response).first
           new.tap do |v|
-            v.model_year = vin_description.attributes['modelYear'].value.to_i
-            v.division = vin_description.attributes['division'].value
-            v.model = vin_description.attributes['modelName'].value
+            v.model_year = vin_description.attr('modelYear').to_i
+            v.division = vin_description.attr('division')
+            v.model = vin_description.attr('modelName')
 
             v.styles = find_elements('style', response).map do |e|
               Style.new(
-                id: e.attributes['id'].value.to_i,
-                name: e.attributes['name'].value,
-                trim: e.attributes['trim'].value,
-                name_without_trim: e.attributes['nameWoTrim'].value,
+                id: e.attr('id').to_i,
+                name: e.attr('name'),
+                trim: e.attr('trim'),
+                name_without_trim: e.attr('nameWoTrim'),
                 body_types: e.xpath("x:bodyType", 'x' => response.body.namespace.href).map do |bt|
-                  Style::BodyType.new(bt.attributes['id'].value.to_i, bt.text)
+                  Style::BodyType.new(bt.attr('id').to_i, bt.text)
                 end
               )
             end
