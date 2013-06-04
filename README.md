@@ -6,10 +6,7 @@ The wonderful [lolsoap](https://github.com/loco2/lolsoap) gem does most of the h
 
 ## Installation
 
-Add these lines to your application's Gemfile:
-
-    # ChromeData will require the lolsoap gem automatically as soon as they release the next version
-    gem 'lolsoap', github: 'loco2/lolsoap', ref: '92831607'
+Add this gem to your application's Gemfile:
 
     gem 'chrome_data'
 
