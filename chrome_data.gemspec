@@ -6,8 +6,8 @@ require 'chrome_data/version'
 Gem::Specification.new do |spec|
   spec.name          = "chrome_data"
   spec.version       = ChromeData::VERSION
-  spec.authors       = ["Jim Ryan"]
-  spec.email         = ["jim@room118solutions.com"]
+  spec.authors       = ["Jim Ryan", "JC Grubbs", "Tony Coconate", "Cory Stephenson"]
+  spec.email         = ["jim@room118solutions.com", "jc@devmynd.com"]
   spec.description   = %q{Provides a ruby interface for Chrome Data's API. Read more about it here: http://www.chromedata.com/}
   spec.summary       = %q{A ruby interface for Chrome Data's API}
   spec.homepage      = "http://github.com/room118solutions/chrome_data"
