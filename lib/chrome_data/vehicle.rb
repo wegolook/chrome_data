@@ -14,56 +14,55 @@ module ChromeData
 
     def self.parse_response(response)
       return unless find_elements('vinDescription', response).first
-      new response
+      self.new response
     end
 
     private
     def initialize(response)
-      @response = response
-      vin_description = self.class.find_elements('vinDescription', @response).first
+      vin_description = self.class.find_elements('vinDescription', response).first
       @model_year = vin_description.attr('modelYear').to_i
       @division = vin_description.attr('division')
       @model = vin_description.attr('modelName')
-      parse_styles
-      parse_standard
-      parse_engines
+      parse_styles response
+      parse_standard response
+      parse_engines response
     end
 
-    def parse_styles
-      @styles = self.class.find_elements('style', @response).map do |e|
-        create_style e
+    def parse_styles(response)
+      @styles = self.class.find_elements('style', response).map do |e|
+        create_style e, response
       end
     end
 
-    def parse_standard
-      @standard = self.class.find_elements('standard', @response).map { |e|
+    def parse_standard(response)
+      @standard = self.class.find_elements('standard', response).map { |e|
         {
           "id" => find_standard_id(e),
           "description" => find_standard_description(e),
           "category" => find_standard_category(e),
-          "style_ids" => collect_style_ids(e)
+          "style_ids" => collect_style_ids(e, response)
         }
       }
     end
 
-    def parse_engines
-      @engines = self.class.find_elements('engine', @response).map do |e|
-        Engine.new(e.at_xpath("x:engineType", 'x' => @response.body.namespace.href).text)
+    def parse_engines(response)
+      @engines = self.class.find_elements('engine', response).map do |e|
+        Engine.new(e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text)
       end
     end
 
-    def create_style(element)
+    def create_style(element, response)
       Style.new(
         id: element.attr('id').to_i,
         name: element.attr('name'),
         trim: element.attr('trim'),
         name_without_trim: element.attr('nameWoTrim'),
-        body_types: collect_body_types(element)
+        body_types: collect_body_types(element, response)
       )
     end
 
-    def collect_body_types element
-      element.xpath("x:bodyType", 'x' => @response.body.namespace.href).map { |bt|
+    def collect_body_types(element, response)
+      element.xpath("x:bodyType", 'x' => response.body.namespace.href).map { |bt|
         Style::BodyType.new(bt.attr('id').to_i, bt.text)
       }
     end
@@ -90,8 +89,8 @@ module ChromeData
       element.children.find { |e| e.name == target }
     end
 
-    def collect_style_ids(element)
-      element.xpath("x:styleId", 'x' => @response.body.namespace.href).map { |style_id|
+    def collect_style_ids(element, response)
+      element.xpath("x:styleId", 'x' => response.body.namespace.href).map { |style_id|
         style_id.text.to_i
       }
     end
