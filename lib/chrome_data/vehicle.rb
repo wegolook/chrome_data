@@ -13,52 +13,74 @@ module ChromeData
     end
 
     def self.parse_response(response)
-      if vin_description = find_elements('vinDescription', response).first
-        self.new response
-      end
-    end
-
-    def initialize response
-      vin_description = self.class.find_elements('vinDescription', response).first
-      @model_year = vin_description.attr('modelYear').to_i
-      @division = vin_description.attr('division')
-      @model = vin_description.attr('modelName')
-      parse_styles response
-      parse_standard response
-      parse_engines response
+      return unless find_elements('vinDescription', response).first
+      new response
     end
 
     private
-    def parse_styles(response)
-      @styles = self.class.find_elements('style', response).map do |e|
-        Style.new(
-          id: e.attr('id').to_i,
-          name: e.attr('name'),
-          trim: e.attr('trim'),
-          name_without_trim: e.attr('nameWoTrim'),
-          body_types: e.xpath("x:bodyType", 'x' => response.body.namespace.href).map do |bt|
-            Style::BodyType.new(bt.attr('id').to_i, bt.text)
-          end
-        )
+    def initialize(response)
+      @response = response
+      vin_description = self.class.find_elements('vinDescription', @response).first
+      @model_year = vin_description.attr('modelYear').to_i
+      @division = vin_description.attr('division')
+      @model = vin_description.attr('modelName')
+      parse_styles
+      parse_standard
+      parse_engines
+    end
+
+    def parse_styles
+      @styles = self.class.find_elements('style', @response).map do |e|
+        create_style e
       end
     end
 
-    def parse_standard(response)
-      @standard = self.class.find_elements('standard', response).map { |e|
-        style_ids = e.xpath("x:styleId", 'x' => response.body.namespace.href).map(&:text)
-        id = e.children.find { |e| e.name == "header" }.attributes["id"].value.to_i
+    def parse_standard
+      @standard = self.class.find_elements('standard', @response).map { |e|
         {
-          "id" => id,
-          "description" => e.children.find { |e| e.name == "description" }.text,
-          "style_ids" => style_ids
+          "id" => find_standard_id(e),
+          "description" => find_standard_description(e),
+          "style_ids" => collect_style_ids(e)
         }
       }
     end
 
-    def parse_engines(response)
-      @engines = self.class.find_elements('engine', response).map do |e|
-        Engine.new(e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text)
+    def parse_engines
+      @engines = self.class.find_elements('engine', @response).map do |e|
+        Engine.new(e.at_xpath("x:engineType", 'x' => @response.body.namespace.href).text)
       end
+    end
+
+    def create_style(element)
+      Style.new(
+        id: element.attr('id').to_i,
+        name: element.attr('name'),
+        trim: element.attr('trim'),
+        name_without_trim: element.attr('nameWoTrim'),
+        body_types: collect_body_types(element)
+      )
+    end
+
+    def collect_body_types element
+      element.xpath("x:bodyType", 'x' => @response.body.namespace.href).map { |bt|
+        Style::BodyType.new(bt.attr('id').to_i, bt.text)
+      }
+    end
+
+    def find_standard_id(element)
+        element.children.find { |e|
+          e.name == "header"
+        }.attributes["id"].value.to_i
+    end
+
+    def find_standard_description(element)
+      element.children.find { |e| e.name == "description" }.text
+    end
+
+    def collect_style_ids(element)
+      element.xpath("x:styleId", 'x' => @response.body.namespace.href).map { |style_id|
+        style_id.text.to_i
+      }
     end
   end
 end
