@@ -49,6 +49,10 @@ describe ChromeData::Vehicle do
           must_equal "1.8L 16-valve I4 turbocharged engine"
       end
 
+      it "sets category" do
+        @standard.fetch("category").must_equal "MECHANICAL"
+      end
+
       it "sets style_ids" do
         @standard.fetch("style_ids").must_equal [337364, 337365]
       end

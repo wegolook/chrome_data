@@ -40,6 +40,7 @@ module ChromeData
         {
           "id" => find_standard_id(e),
           "description" => find_standard_description(e),
+          "category" => find_standard_category(e),
           "style_ids" => collect_style_ids(e)
         }
       }
@@ -68,13 +69,25 @@ module ChromeData
     end
 
     def find_standard_id(element)
-        element.children.find { |e|
-          e.name == "header"
-        }.attributes["id"].value.to_i
+      if id = find(element, "header")
+        id.attributes["id"].value.to_i
+      end
     end
 
     def find_standard_description(element)
-      element.children.find { |e| e.name == "description" }.text
+      if desc = find(element, "description")
+        desc.text
+      end
+    end
+
+    def find_standard_category(element)
+      if cat = find(element, "header")
+        cat.text
+      end
+    end
+
+    def find(element, target)
+      element.children.find { |e| e.name == target }
     end
 
     def collect_style_ids(element)
