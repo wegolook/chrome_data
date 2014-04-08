@@ -50,6 +50,7 @@ module ChromeData
           http.request_post(endpoint_uri.path, request.content, request.headers)
         end
 
+        raw_response.value    # raise HTTP exception if not a 2xx response
         client.response(request, raw_response.body)
       end
 
