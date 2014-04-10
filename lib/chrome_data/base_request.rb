@@ -50,8 +50,14 @@ module ChromeData
           http.request_post(endpoint_uri.path, request.content, request.headers)
         end
 
-        raw_response.value    # raise HTTP exception if not a 2xx response
-        client.response(request, raw_response.body)
+        response = client.response(request, raw_response.body)
+
+        # Sometimes Chrome sends a 500 with a valid SOAP fault in it, sometimes we see a 503 with a html
+        # message in the body.  In the first case, the above line will raise a LOLSoapFault.  If we get
+        # here, there was some other HTTP error, so raise that.
+        raw_response.value    # raises HTTP exception if not a 2xx response
+
+        response
       end
 
       # Builds request, returns LolSoap::Request
