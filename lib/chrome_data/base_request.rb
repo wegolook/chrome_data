@@ -31,6 +31,7 @@ module ChromeData
             # NOTE: This basically mirrors LolSoap::Builder#method_missing
             #       because Builder undefines most methods, including #send
 
+            # allow arrays of values, as well as simple values
             ((v.kind_of? Array) ? v : Array(v)).each do |single_v|
               if b.__type__.has_attribute?(k)
                 b.__attribute__ k, single_v
