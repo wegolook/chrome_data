@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "mocha"
 
   spec.add_dependency "symboltable"
-  spec.add_dependency "activesupport", '>= 3.0'
-  spec.add_dependency "lolsoap", "~> 0.2.0"
+  spec.add_dependency "activesupport", '>= 4.0'
+  spec.add_dependency "lolsoap", "~> 0.6.1"
 end
