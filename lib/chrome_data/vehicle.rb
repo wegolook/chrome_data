@@ -9,7 +9,7 @@ module ChromeData
     end
 
     def self.find_by_vin(vin)
-      request 'vin' => vin
+      request "vin" => vin, 'switch' => 'IncludeDefinitions'
     end
 
     def self.parse_response(response)
@@ -26,12 +26,23 @@ module ChromeData
       parse_styles response
       parse_standard response
       parse_engines response
+      parse_generic_equipment response
     end
 
     def parse_styles(response)
       @styles = self.class.find_elements('style', response).map do |e|
         create_style e, response
       end
+    end
+
+    def parse_generic_equipment(response)
+      @generic_equipment = self.class.find_elements('genericEquipment', response).map { |e|
+        {
+          "group" => find_equipment_group(e),
+          "header" => find_equipment_header(e),
+          "category" => find_equipment_category(e)
+        }
+      }
     end
 
     def parse_standard(response)
@@ -82,6 +93,27 @@ module ChromeData
     def find_standard_category(element)
       if cat = find(element, "header")
         cat.text
+      end
+    end
+
+    def find_equipment_group(element)
+      definition = find(element,"definition")
+      if group = find(definition,"group")
+        group.text
+      end
+    end
+
+    def find_equipment_header(element)
+      definition = find(element,"definition")
+      if header = find(definition,"header")
+        header.text
+      end
+    end
+
+    def find_equipment_category(element)
+      definition = find(element,"definition")
+      if category = find(definition,"category")
+        category.text
       end
     end
 
