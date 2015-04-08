@@ -20,6 +20,7 @@ module ChromeData
     private
     def initialize(response)
       vin_description = self.class.find_elements('vinDescription', response).first
+      @vin = vin_description.attr('vin')
       @model_year = vin_description.attr('modelYear').to_i
       @division = vin_description.attr('division')
       @model = vin_description.attr('modelName')

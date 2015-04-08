@@ -23,6 +23,10 @@ describe ChromeData::Vehicle do
       @vehicle.must_be_instance_of ChromeData::Vehicle
     end
 
+    it 'sets VIN on Vehicle' do
+      @vehicle.vin.must_equal 'WDDGF4HB1CR000000'
+    end
+
     it 'sets model year on Vehicle' do
       @vehicle.model_year.must_equal 2012
     end
