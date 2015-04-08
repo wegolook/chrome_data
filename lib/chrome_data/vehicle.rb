@@ -9,7 +9,7 @@ module ChromeData
     end
 
     def self.find_by_vin(vin)
-      request "vin" => vin, 'switch' => 'IncludeDefinitions'
+      request 'vin' => vin, 'switch' => 'IncludeDefinitions'
     end
 
     def self.parse_response(response)
