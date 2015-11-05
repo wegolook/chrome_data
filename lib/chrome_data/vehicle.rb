@@ -2,7 +2,7 @@ module ChromeData
   class Vehicle < BaseRequest
     class Engine < Struct.new(:engine_type, :installed_cause, :fuel_type, :cylinders, :displacement); end
 
-    attr_accessor :model_year, :division, :model, :styles, :engines, :standard, :trim_name, :body_type
+    attr_accessor :model_year, :division, :model, :styles, :engines, :standard, :trim_name, :body_type, :driving_wheels
 
     def self.request_name
       "describeVehicle"
@@ -27,6 +27,7 @@ module ChromeData
       @model = vin_description.attr('modelName')
       @trim_name = vehicle_description.attributes['bestTrimName'] ? vehicle_description.attributes['bestTrimName'].value : nil
       @body_type = vin_description.attr('bodyType')
+      @driving_wheels =- vin_description.attr('drivingWheels')
       parse_styles response
       parse_standard response
       parse_engines response
