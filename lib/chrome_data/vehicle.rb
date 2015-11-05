@@ -1,8 +1,8 @@
 module ChromeData
   class Vehicle < BaseRequest
-    class Engine < Struct.new(:type); end
+    class Engine < Struct.new(:engine_type, :installed_cause, :fuel_type, :cylinders, :displacement); end
 
-    attr_accessor :model_year, :division, :model, :styles, :engines, :standard
+    attr_accessor :model_year, :division, :model, :styles, :engines, :standard, :trim_name, :body_type
 
     def self.request_name
       "describeVehicle"
@@ -20,10 +20,13 @@ module ChromeData
     private
     def initialize(response)
       vin_description = self.class.find_elements('vinDescription', response).first
+      vehicle_description = self.class.find_elements('VehicleDescription', response).first
       @vin = vin_description.attr('vin')
       @model_year = vin_description.attr('modelYear').to_i
       @division = vin_description.attr('division')
       @model = vin_description.attr('modelName')
+      @trim_name = vehicle_description.attr('bestTrimName')
+      @body_type = vin_description.attr('bodyType')
       parse_styles response
       parse_standard response
       parse_engines response
@@ -59,7 +62,13 @@ module ChromeData
 
     def parse_engines(response)
       @engines = self.class.find_elements('engine', response).map do |e|
-        Engine.new(e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text)
+        engine_type = e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text
+        installed_cause = e.at_xpath("x:installed/@cause", 'x' => response.body.namespace.href).text
+        fuel_type = e.at_xpath("x:fuel_type", 'x' => response.body.namespace.href).text
+        cylinders = e.at_xpath("x:cylinders", 'x' => response.body.namespace.href).text
+        displacement = e.at_xpath("x:displacement/@liters", 'x' => response.body.namespace.href).text
+
+        Engine.new(engine_type, installed_cause, fuel_type, cylinders, displacement)
       end
     end
 
