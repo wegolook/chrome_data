@@ -27,7 +27,7 @@ module ChromeData
       @model = vin_description.attr('modelName')
       @trim_name = vehicle_description.attributes['bestTrimName'] ? vehicle_description.attributes['bestTrimName'].value : nil
       @body_type = vin_description.attr('bodyType')
-      @driving_wheels =- vin_description.attr('drivingWheels')
+      @driving_wheels = vin_description.attr('drivingWheels')
       parse_styles response
       parse_standard response
       parse_engines response
