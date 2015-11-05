@@ -20,12 +20,12 @@ module ChromeData
     private
     def initialize(response)
       vin_description = self.class.find_elements('vinDescription', response).first
-      vehicle_description = self.class.find_elements('VehicleDescription', response).first
+      vehicle_description = response.body
       @vin = vin_description.attr('vin')
       @model_year = vin_description.attr('modelYear').to_i
       @division = vin_description.attr('division')
       @model = vin_description.attr('modelName')
-      @trim_name = vehicle_description.attr('bestTrimName')
+      @trim_name = vehicle_description.attributes['bestTrimName']
       @body_type = vin_description.attr('bodyType')
       parse_styles response
       parse_standard response
@@ -64,7 +64,7 @@ module ChromeData
       @engines = self.class.find_elements('engine', response).map do |e|
         engine_type = e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text
         installed_cause = e.at_xpath("x:installed/@cause", 'x' => response.body.namespace.href).text
-        fuel_type = e.at_xpath("x:fuel_type", 'x' => response.body.namespace.href).text
+        fuel_type = e.at_xpath("x:fuelType", 'x' => response.body.namespace.href).text
         cylinders = e.at_xpath("x:cylinders", 'x' => response.body.namespace.href).text
         displacement = e.at_xpath("x:displacement/@liters", 'x' => response.body.namespace.href).text
 
