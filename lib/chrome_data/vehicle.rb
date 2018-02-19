@@ -66,8 +66,10 @@ module ChromeData
         engine_type = e.at_xpath("x:engineType", 'x' => response.body.namespace.href).text
         installed_cause = e.at_xpath("x:installed/@cause", 'x' => response.body.namespace.href).text
         fuel_type = e.at_xpath("x:fuelType", 'x' => response.body.namespace.href).text
-        cylinders = e.at_xpath("x:cylinders", 'x' => response.body.namespace.href).text
-        displacement = e.at_xpath("x:displacement/@liters", 'x' => response.body.namespace.href).text
+        raw_cylinders = e.at_xpath("x:cylinders", 'x' => response.body.namespace.href)
+        cylinders = raw_cylinders ? raw_cylinders.text : 'N/A'
+        raw_displacement = e.at_xpath("x:displacement/@liters", 'x' => response.body.namespace.href)
+        displacement = raw_displacement ? raw_displacement.text : 'N/A'
 
         Engine.new(engine_type, installed_cause, fuel_type, cylinders, displacement)
       end
